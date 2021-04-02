@@ -1,6 +1,6 @@
 /**
  *  Tindi Systems Inc
- *  $specifiedsolutionname$ $projectname$
+ *  EasySecuritiesManager Domain
  *  See Copyright file at the top of the source tree.
  *
  *  This product includes software developed by the 
@@ -23,7 +23,11 @@ using System;
 
 namespace EasySecuritiesManager.Domain.Models
 {
-    public class User
+    public class User : DomainObject
     {
+        public string   Email           { get; set; }
+        public string   Username        { get; set; }
+        public string   PasswordHash    { get; set; }
+        public DateTime DateJoined      { get; set; } = DateTime.Now ;
     }
 }

@@ -19,15 +19,14 @@
  *  Created 4/1/2021 5:02:19 AM
  *  Modified 4/1/2021 5:02:19 AM
  */
-using System;
+using System.Collections.Generic;
 
 namespace EasySecuritiesManager.Domain.Models
 {
-    public class Account
+    public class Account : DomainObject
     {
-        public int Id { get; set; }
-        public int AccountHolder { get; set; }
-        public decimal Balance { get; set; }
-        public int AssetTransactions { get; set; }        
+        public User                             AccountHolder       { get; set; }
+        public decimal                          Balance             { get; set; }
+        public IEnumerable<AssetTransaction>    AssetTransactions   { get; set; }        
     }
 }

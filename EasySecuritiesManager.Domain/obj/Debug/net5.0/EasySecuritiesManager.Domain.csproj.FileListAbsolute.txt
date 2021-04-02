@@ -1,0 +1,12 @@
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\EasySecuritiesManager.Domain.deps.json
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\EasySecuritiesManager.Domain.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\ref\EasySecuritiesManager.Domain.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\EasySecuritiesManager.Domain.pdb
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.csprojAssemblyReference.cache
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.AssemblyInfoInputs.cache
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.AssemblyInfo.cs
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\ref\EasySecuritiesManager.Domain.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.pdb

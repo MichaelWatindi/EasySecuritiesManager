@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "EasySecuritiesManager.Domain/1.0.0": {
+        "runtime": {
+          "EasySecuritiesManager.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EasySecuritiesManager.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
