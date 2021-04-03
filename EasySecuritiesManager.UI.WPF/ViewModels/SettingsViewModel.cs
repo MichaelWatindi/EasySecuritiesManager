@@ -23,7 +23,7 @@ using System;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
-    public class SettingsViewModel
+    public class SettingsViewModel : ViewModelBase
     {
     }
 }

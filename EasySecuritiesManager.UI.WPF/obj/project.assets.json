@@ -5737,23 +5737,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\miket\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Mike\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\EasySecuritiesManager.UI.WPF.csproj",
+      "projectUniqueName": "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\EasySecuritiesManager.UI.WPF.csproj",
       "projectName": "EasySecuritiesManager.UI.WPF",
-      "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\EasySecuritiesManager.UI.WPF.csproj",
-      "packagesPath": "C:\\Users\\miket\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\obj\\",
+      "projectPath": "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\EasySecuritiesManager.UI.WPF.csproj",
+      "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\miket\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5768,11 +5770,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj": {
-              "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj"
+            "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj"
             },
-            "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj": {
-              "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj"
+            "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\Mike\\Source\\Repos\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj"
             }
           }
         }
