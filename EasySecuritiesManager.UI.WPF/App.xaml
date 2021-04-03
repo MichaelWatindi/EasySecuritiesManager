@@ -1,0 +1,27 @@
+﻿<Application x:Class="EasySecuritiesManager.UI.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:EasySecuritiesManager.UI.WPF"
+             xmlns:viewmodels="clr-namespace:EasySecuritiesManager.UI.WPF.ViewModels"
+             xmlns:views="clr-namespace:EasySecuritiesManager.UI.WPF.Views">
+    <Application.Resources>
+
+        <!--ResourceDictionaries-->
+        <ResourceDictionary>
+            <!--Merged Dictionaries-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/CommonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--Data Template that maps the HomeView to the HomeViewModel-->
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <views:HomeView/>
+            </DataTemplate>
+
+            <!--Data Template that maps the PortfolioView to the PortfolioViewModel-->
+            <DataTemplate DataType="{x:Type viewmodels:PortfolioViewModel}">
+                <views:PortfolioView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySecuritiesManager.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySecuritiesManager.EntityFramework", "EasySecuritiesManager.EntityFramework\EasySecuritiesManager.EntityFramework.csproj", "{834D26D6-4776-4538-B2CA-9E5CF5DBC385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySecuritiesManager.UI.Console", "EasySecuritiesManager.UI.Console\EasySecuritiesManager.UI.Console.csproj", "{A4BDCDDE-F133-4F2E-9371-25E6E8907A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySecuritiesManager.UI.Console", "EasySecuritiesManager.UI.Console\EasySecuritiesManager.UI.Console.csproj", "{A4BDCDDE-F133-4F2E-9371-25E6E8907A53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySecuritiesManager.UI.WPF", "EasySecuritiesManager.UI.WPF\EasySecuritiesManager.UI.WPF.csproj", "{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{A4BDCDDE-F133-4F2E-9371-25E6E8907A53}.Release|x64.Build.0 = Release|Any CPU
 		{A4BDCDDE-F133-4F2E-9371-25E6E8907A53}.Release|x86.ActiveCfg = Release|Any CPU
 		{A4BDCDDE-F133-4F2E-9371-25E6E8907A53}.Release|x86.Build.0 = Release|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Debug|x64.Build.0 = Debug|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Debug|x86.Build.0 = Debug|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Release|x64.ActiveCfg = Release|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Release|x64.Build.0 = Release|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
