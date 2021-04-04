@@ -22,7 +22,7 @@ namespace EasySecuritiesManager.UI.WPF
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent() ;            
         }
     }
 }

@@ -25,5 +25,10 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
+        public MajorIndexListingViewModel IndicesListingViewModel { get; set; }
+        public HomeViewModel(MajorIndexListingViewModel majorIndexViewModel)
+        {
+            IndicesListingViewModel = majorIndexViewModel ;
+        }
     }
 }

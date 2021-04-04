@@ -2,6 +2,7 @@
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.EntityFramework;
 using EasySecuritiesManager.EntityFramework.Services;
+using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using System;
 using System.Linq;
 
@@ -16,6 +17,14 @@ namespace EasySecuritiesManager.UI.Consoles
             Console.WriteLine( userService.GetAllAsync().Result.Count() ) ;
             Console.WriteLine( userService.GetAsync( 2 ).Result ) ;
             System.Console.WriteLine( "" ) ;
+        }
+
+        static void Test_FinancialModelingPrepApi()
+        {
+            new MajorIndexService().GetMajorIndex(Domain.Models.MajorIndexType.DowJones).ContinueWith((task) =>
+            {
+                var index = task.Result;
+            });
         }
     }
 }

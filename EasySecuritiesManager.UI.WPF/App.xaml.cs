@@ -1,4 +1,5 @@
-﻿using EasySecuritiesManager.UI.WPF.ViewModels;
+﻿using EasySecuritiesManager.FinancialModelingPrepApi.Services;
+using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +17,8 @@ namespace EasySecuritiesManager.UI.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" ) ;
+            
             Window window = new MainWindow() ;
             window.Show() ;
             window.DataContext = new MainViewModel() ;

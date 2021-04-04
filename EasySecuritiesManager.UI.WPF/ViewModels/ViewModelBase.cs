@@ -19,11 +19,12 @@
  *  Created 4/2/2021 4:32:34 PM
  *  Modified 4/2/2021 4:32:34 PM
  */
+using EasySecuritiesManager.UI.WPF.Models;
 using System;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
-    public class ViewModelBase
+    public class ViewModelBase : ObservableObject
     {
     }
 }

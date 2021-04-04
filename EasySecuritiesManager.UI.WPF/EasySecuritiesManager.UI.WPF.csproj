@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EasySecuritiesManager.Domain\EasySecuritiesManager.Domain.csproj" />
     <ProjectReference Include="..\EasySecuritiesManager.EntityFramework\EasySecuritiesManager.EntityFramework.csproj" />
+    <ProjectReference Include="..\EasySecuritiesManager.FinancialModelingPrepApi\EasySecuritiesManager.FinancialModelingPrepApi.csproj" />
   </ItemGroup>
 
 </Project>

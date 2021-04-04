@@ -19,6 +19,7 @@
  *  Created 4/2/2021 7:34:33 PM
  *  Modified 4/2/2021 7:34:33 PM
  */
+using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
@@ -50,7 +51,7 @@ namespace EasySecuritiesManager.UI.WPF.Commands
                 switch ( viewType )
                 {
                     case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel() ;
+                        _navigator.CurrentViewModel = new HomeViewModel( MajorIndexListingViewModel.LoadMajorIndexViewModel( new MajorIndexService() ) ) ;
                         break;
                     case ViewType.Portfolio:
                         _navigator.CurrentViewModel = new PortfolioViewModel() ;
