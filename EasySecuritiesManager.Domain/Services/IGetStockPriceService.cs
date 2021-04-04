@@ -26,6 +26,6 @@ namespace EasySecuritiesManager.Domain.Services
 {
     public interface IGetStockPriceService
     {
-        Task<decimal> GetPrice( string symbol ) ;
+        Task<decimal?> GetPrice( string symbol ) ;
     }
 }

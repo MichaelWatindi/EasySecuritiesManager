@@ -17,7 +17,7 @@ namespace EasySecuritiesManager.UI.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" ) ;
+            string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" ) ;            
             
             Window window = new MainWindow() ;
             window.Show() ;

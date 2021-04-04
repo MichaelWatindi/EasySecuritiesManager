@@ -34,22 +34,15 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
     {
         public async Task<MajorIndex> GetMajorIndex( MajorIndexType indexType )
         {
-            using (HttpClient client = new HttpClient())
-            {
-                string baseURI          = "https://financialmodelingprep.com/api/v3/";
+            using ( FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient() )
+            {                
                 string indexTypeURIRep  = GetIndexTypeURIRep( indexType ) ;
                 string serviceKey       = "46cc602100660fc8f6b927fa71223fc1" ;
-
-                string uri = baseURI + "quote/" + indexTypeURIRep + "?apikey=" + serviceKey ;
                 
-                HttpResponseMessage response = await client.GetAsync(uri) ;
-                string jsonResponse = await response.Content.ReadAsStringAsync() ;
+                string uriSuffix = "quote/" + indexTypeURIRep + "?apikey=" + serviceKey ; 
 
-                List<MajorIndex> listOfMajorIndices = JsonConvert.DeserializeObject<List<MajorIndex>>(jsonResponse);
-                if (!listOfMajorIndices.Any()) { return null ; }
-
-                listOfMajorIndices[0].Type = indexType ;
-                return listOfMajorIndices[0] ;
+                MajorIndex majorIndex = await client.GetAsync<MajorIndex>( uriSuffix ) ;
+                return majorIndex ;               
             }
         }
 
@@ -64,7 +57,7 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
                 case MajorIndexType.SP500:
                     return "^GSPC";
                 default:
-                    return "^DJI";
+                    throw new Exception( "Major IndexType does not have a suffix defined." ) ;
             }
         }
     }
