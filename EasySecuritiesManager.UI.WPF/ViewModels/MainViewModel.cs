@@ -27,9 +27,11 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
     public class MainViewModel : ViewModelBase
     {
         public INavigator Navigator { get; set ; } = new Navigator() ;
-        public MainViewModel()
+
+        public MainViewModel( INavigator navigator )
         {
-            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home) ;
-        }
+            Navigator = navigator ;
+            Navigator.UpdateCurrentViewModelCommand.Execute( ViewType.Home ) ;
+        }       
     }
 }

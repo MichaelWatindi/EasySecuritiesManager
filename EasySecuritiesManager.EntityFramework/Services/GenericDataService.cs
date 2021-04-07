@@ -30,7 +30,7 @@ namespace EasySecuritiesManager.EntityFramework.Services
 {
     public class GenericDataService<T> : IDataService<T> where T : DomainObject
     {
-        private readonly EasySecuritiesManagerDbContextFactory _contextFactory ;
+        protected readonly EasySecuritiesManagerDbContextFactory _contextFactory ;
 
         public GenericDataService( EasySecuritiesManagerDbContextFactory contextFactory )
         {
@@ -69,7 +69,7 @@ namespace EasySecuritiesManager.EntityFramework.Services
             }
         }
 
-        public async Task<T> GetAsync( int id )
+        public virtual async Task<T> GetAsync( int id )
         {
             using (EasySecuritiesManagerDBContext context = _contextFactory.CreateDbContext())
             {

@@ -27,14 +27,14 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 {
     class StockPriceResult
     {
-        public string   Symbol { get; set; }
-        public decimal  Price { get; set; }
-        public int      Volume { get; set; }
+        public string   Symbol  { get; set; }
+        public decimal  Price   { get; set; }
+        public int      Volume  { get; set; }
     }
 
     public  class GetStockPriceService : IGetStockPriceService
     {
-        public async Task<decimal?> GetPrice( string symbol )
+        public async Task<decimal> GetPrice( string symbol )
         {
             using ( FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient() )
             {                
@@ -43,10 +43,8 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 
                 StockPriceResult stockPriceResult = await client.GetAsync<StockPriceResult>( uriSuffix ) ;
 
-                if (stockPriceResult.Price == 0 )
-                {
-                    throw new InvalidSymbolException( symbol ) ;
-                }
+                if ( stockPriceResult.Price == 0 ) { throw new InvalidSymbolException( symbol ) ; }
+
                 return stockPriceResult.Price ;                
             }
         }

@@ -16,16 +16,17 @@
  *  Copyright (c) 2021 Tindi Systems Inc.
  *  All Rights Reserved.
  *  
- *  Created 4/3/2021 11:12:39 PM
- *  Modified 4/3/2021 11:12:39 PM
+ *  Created 4/5/2021 6:04:01 PM
+ *  Modified 4/5/2021 6:04:01 PM
  */
 
+using EasySecuritiesManager.Domain.Models;
 using System.Threading.Tasks;
 
-namespace EasySecuritiesManager.Domain.Services
+namespace EasySecuritiesManager.Domain.Services.TransactionServices
 {
-    public interface IGetStockPriceService
+    public interface IBuyStockService
     {
-        Task<decimal> GetPrice( string symbol ) ;
+        Task<Account> BuyStock( Account buyer, string stock, int shares ) ; 
     }
 }
