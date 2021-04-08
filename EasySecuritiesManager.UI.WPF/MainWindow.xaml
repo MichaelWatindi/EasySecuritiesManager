@@ -18,5 +18,8 @@
         
         <!--Content of Main Window-->
         <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}"/>
+        
+        <!--Side Bar-->
+        <!--Bottom Bar-->
     </Grid>
 </Window>

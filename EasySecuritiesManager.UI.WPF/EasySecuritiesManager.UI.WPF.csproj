@@ -12,4 +12,8 @@
     <ProjectReference Include="..\EasySecuritiesManager.FinancialModelingPrepApi\EasySecuritiesManager.FinancialModelingPrepApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Factories\" />
+  </ItemGroup>
+
 </Project>

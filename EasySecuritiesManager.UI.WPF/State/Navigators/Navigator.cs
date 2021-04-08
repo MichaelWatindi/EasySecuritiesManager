@@ -32,17 +32,15 @@ namespace EasySecuritiesManager.UI.WPF.State.Navigators
     public class Navigator : ObservableObject, INavigator
     {
         private ViewModelBase   _currentViewModel ;
-        public ICommand         UpdateCurrentViewModelCommand => new UpdateCurrentViewModelCommand(this);
+        public ICommand         UpdateCurrentViewModelCommand => new UpdateCurrentViewModelCommand( this );
 
         public ViewModelBase    CurrentViewModel        
         { 
             get { return _currentViewModel ; } 
             set {
                 _currentViewModel = value ;
-                OnPropertyChanged(nameof( CurrentViewModel ) ) ;
+                OnPropertyChanged( nameof( CurrentViewModel ) ) ;
             }
-        }
-       
-       
+        }       
     }
 }
