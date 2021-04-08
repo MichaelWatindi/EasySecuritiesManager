@@ -22,6 +22,7 @@
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
+using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
 using System;
 using System.Windows.Input;
 
@@ -29,12 +30,15 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 {
     public class UpdateCurrentViewModelCommand : ICommand
     {
-        public event    EventHandler    CanExecuteChanged;
-        private         INavigator      _navigator ;
-
-        public UpdateCurrentViewModelCommand( INavigator navigator )
+        public  event    EventHandler    CanExecuteChanged;
+        private readonly INavigator      _navigator ;
+        private readonly IEasySecuritiesRootManagerViewModelFactory _viewModelFactory ;
+            
+        public UpdateCurrentViewModelCommand(INavigator navigator, 
+                IEasySecuritiesRootManagerViewModelFactory viewModelFactory)
         {
-            _navigator = navigator;
+            _navigator          = navigator;
+            _viewModelFactory   = viewModelFactory;
         }
 
         public bool CanExecute( object parameter )
@@ -48,17 +52,7 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             {
                 ViewType viewType = ( ViewType ) parameter ;
 
-                switch ( viewType )
-                {
-                    case ViewType.Home:
-                        _navigator.CurrentViewModel = new HomeViewModel( MajorIndexListingViewModel.LoadMajorIndexViewModel( new MajorIndexService() ) ) ;
-                        break;
-                    case ViewType.Portfolio:
-                        _navigator.CurrentViewModel = new PortfolioViewModel() ;
-                        break;
-                    default:
-                        break;
-                }
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel( viewType ) ;
             }
         }
     }

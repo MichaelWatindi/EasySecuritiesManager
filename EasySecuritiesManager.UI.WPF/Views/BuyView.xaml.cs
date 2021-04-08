@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EasySecuritiesManager.UI.WPF
+namespace EasySecuritiesManager.UI.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BuyView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BuyView : UserControl
     {
-        public MainWindow( object dataContext )
+        public BuyView()
         {
-            InitializeComponent() ;
-            DataContext = dataContext ;
+            InitializeComponent();
         }
     }
 }

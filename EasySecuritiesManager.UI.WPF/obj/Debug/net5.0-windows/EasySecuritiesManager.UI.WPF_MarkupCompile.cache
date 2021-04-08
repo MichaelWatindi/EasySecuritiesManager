@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\
 EasySecuritiesManager.UI.WPF
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\App.xaml
-8-342457002
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\App.xaml
+9-2020530545
 
-22516918589
-2171880804830
-Controls\MajorIndexCardControl.xaml;Controls\MajorIndexListingControl.xaml;Controls\NavigationBarControl.xaml;MainWindow.xaml;Styles\CommonStyle.xaml;Styles\NavigationBarStyles.xaml;Views\HomeView.xaml;Views\PortfolioView.xaml;
+29-914709840
+2171823631977
+Controls\MajorIndexCardControl.xaml;Controls\MajorIndexListingControl.xaml;Controls\NavigationBarControl.xaml;MainWindow.xaml;Styles\CommonStyle.xaml;Styles\NavigationBarStyles.xaml;Views\BuyView.xaml;Views\HomeView.xaml;Views\PortfolioView.xaml;
 
 False
 

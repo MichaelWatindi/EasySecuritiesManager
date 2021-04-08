@@ -6,6 +6,7 @@ using EasySecuritiesManager.EntityFramework.Services;
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
+using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,8 @@ namespace EasySecuritiesManager.UI.WPF
 
             IServiceProvider serviceProvider = CreateServiceProvider() ;
                                
-            Window window = new MainWindow() ;
-            window.Show() ;
-            window.DataContext = serviceProvider.GetRequiredService<MainViewModel>() ;
-            
+            Window window = serviceProvider.GetRequiredService<MainWindow>() ;
+            window.Show() ;            
             base.OnStartup( e ) ;
         }
 
@@ -47,8 +46,18 @@ namespace EasySecuritiesManager.UI.WPF
             services.AddSingleton<IGetStockPriceService, GetStockPriceService>() ;
             services.AddSingleton<IBuyStockService, BuyStockService>() ;
 
+            services.AddSingleton<IMajorIndexService, MajorIndexService>() ;
+
+            services.AddSingleton<IEasySecuritiesRootManagerViewModelFactory, EasySecuritiesManagerRootViewModelFactory>() ;            
+            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<HomeViewModel>, HomeViewModelFactory>() ;
+            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>() ;
+            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<MajorIndexListingViewModel>, MajorIndexListingViewModelFactory>() ;
+
+            services.AddScoped<INavigator, Navigator>();
             services.AddScoped<MainViewModel>() ;
-            services.AddScoped<INavigator, Navigator>() ;           
+            services.AddScoped<BuyViewModel>() ;
+            
+            services.AddScoped<MainWindow>( s => new WPF.MainWindow( s.GetRequiredService<MainViewModel>() ) ) ;            
 
             return services.BuildServiceProvider() ;
         }

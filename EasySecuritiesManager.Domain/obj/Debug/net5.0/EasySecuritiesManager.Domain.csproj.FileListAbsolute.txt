@@ -10,3 +10,15 @@ C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecu
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.dll
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\ref\EasySecuritiesManager.Domain.dll
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.pdb
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\EasySecuritiesManager.Domain.deps.json
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\EasySecuritiesManager.Domain.dll
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\ref\EasySecuritiesManager.Domain.dll
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\bin\Debug\net5.0\EasySecuritiesManager.Domain.pdb
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.csprojAssemblyReference.cache
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.AssemblyInfoInputs.cache
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.AssemblyInfo.cs
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.dll
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\ref\EasySecuritiesManager.Domain.dll
+C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.Domain\obj\Debug\net5.0\EasySecuritiesManager.Domain.pdb

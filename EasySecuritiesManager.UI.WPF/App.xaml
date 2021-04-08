@@ -23,6 +23,11 @@
             <DataTemplate DataType="{x:Type viewmodels:PortfolioViewModel}">
                 <views:PortfolioView/>
             </DataTemplate>
+
+            <!--Data Template that maps the BuyView to the BuyViewModel-->
+            <DataTemplate DataType="{x:Type viewmodels:BuyViewModel}">
+                <views:BuyView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

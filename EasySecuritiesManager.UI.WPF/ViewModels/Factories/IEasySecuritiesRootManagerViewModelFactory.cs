@@ -6,7 +6,7 @@
  *  This product includes software developed by the 
  *  Tindi Systems
  *
- *  @file $filename$
+ *  @file $filename
  *
  *  @brief
  *
@@ -16,22 +16,16 @@
  *  Copyright (c) 2021 Tindi Systems Inc.
  *  All Rights Reserved.
  *  
- *  Created 4/2/2021 4:31:50 PM
- *  Modified 4/2/2021 4:31:50 PM
+ *  Created 4/8/2021 5:14:02 AM
+ *  Modified 4/8/2021 5:14:02 AM
  */
+
 using EasySecuritiesManager.UI.WPF.State.Navigators;
-using System;
 
-namespace EasySecuritiesManager.UI.WPF.ViewModels
+namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
 {
-    public class MainViewModel : ViewModelBase
+    public interface IEasySecuritiesRootManagerViewModelFactory
     {
-        public INavigator Navigator { get; set ; } 
-
-        public MainViewModel( INavigator navigator )
-        {
-            Navigator = navigator ;
-            Navigator.UpdateCurrentViewModelCommand.Execute( ViewType.Home ) ;
-        }       
+        ViewModelBase CreateViewModel( ViewType viewType ) ;
     }
 }
