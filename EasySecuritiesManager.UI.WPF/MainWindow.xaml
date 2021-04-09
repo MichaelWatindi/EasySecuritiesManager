@@ -15,9 +15,11 @@
         
         <!--Navigation Bar-->
         <controls:NavigationBarControl Grid.Row="0" DataContext="{Binding Navigator}"/>
-        
+                
         <!--Content of Main Window-->
-        <ContentControl Grid.Row="1" Content="{Binding Navigator.CurrentViewModel}"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ContentControl Content="{Binding Navigator.CurrentViewModel}"/>
+        </ScrollViewer>        
         
         <!--Side Bar-->
         <!--Bottom Bar-->

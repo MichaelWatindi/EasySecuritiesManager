@@ -78,7 +78,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         public BuyViewModel( IGetStockPriceService stockPriceService, IBuyStockService buyStockService )
         {
             SearchSymbolCommand = new SearchSymbolCommand( this, stockPriceService ) ;
-            BuyStockCommand     = new BuyStockCommand( this, buyStockService) ;
+            BuyStockCommand     = new BuyStockCommand( this, buyStockService ) ;
         }
 
     }
