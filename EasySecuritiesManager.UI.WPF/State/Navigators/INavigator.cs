@@ -34,7 +34,7 @@ namespace EasySecuritiesManager.UI.WPF.State.Navigators
     }
     public interface INavigator
     {
-        ViewModelBase   CurrentViewModel        { get ; set ; }
-        ICommand        UpdateCurrentViewModelCommand  { get ; }
+        ViewModelBase   CurrentViewModel                { get ; set ; }
+        ICommand        UpdateCurrentViewModelCommand   { get ; }
     }
 }

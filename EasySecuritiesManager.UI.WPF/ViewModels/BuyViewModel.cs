@@ -19,11 +19,67 @@
  *  Created 4/2/2021 7:25:12 PM
  *  Modified 4/2/2021 7:25:12 PM
  */
+using EasySecuritiesManager.Domain.Services;
+using EasySecuritiesManager.Domain.Services.TransactionServices;
+using EasySecuritiesManager.UI.WPF.Commands;
 using System;
+using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class BuyViewModel : ViewModelBase
-    {
+    {       
+        public ICommand SearchSymbolCommand { get; set; }
+        public ICommand BuyStockCommand { get; set; }
+         
+        private string _symbol;
+        public string Symbol
+        {
+            get => _symbol; 
+            set { 
+                _symbol = value;
+                OnPropertyChanged( nameof( Symbol )) ;
+            }
+        }
+
+        private decimal _stockPrice;
+        public decimal StockPrice
+        {
+            get => _stockPrice;
+            set {
+                _stockPrice = value;
+                OnPropertyChanged( nameof( StockPrice ));
+                OnPropertyChanged( nameof( TotalPrice ));
+            }
+        }
+
+        private int _sharesToBuy ;
+        public int SharesToBuy
+        {
+            get => _sharesToBuy;
+            set {
+                _sharesToBuy = value;
+                OnPropertyChanged( nameof( SharesToBuy ));
+                OnPropertyChanged( nameof( TotalPrice ));
+            }
+        }
+
+        private string _searchResultSymbol = string.Empty ;
+        public string SearchResultSymbol
+        {
+            get => _searchResultSymbol;
+            set {
+                _searchResultSymbol = value;
+                OnPropertyChanged( nameof( SearchResultSymbol ));
+            }
+        }
+        public decimal TotalPrice => SharesToBuy * StockPrice ;
+
+        public BuyViewModel( IGetStockPriceService stockPriceService, IBuyStockService buyStockService )
+        {
+            SearchSymbolCommand = new SearchSymbolCommand( this, stockPriceService ) ;
+            BuyStockCommand     = new BuyStockCommand( this, buyStockService) ;
+        }
+
     }
 }

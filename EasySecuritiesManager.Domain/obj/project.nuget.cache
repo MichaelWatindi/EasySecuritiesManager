@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oUZo2FSI8sFP16bvSNOA7NzSvT/aW5TEChqFfJfgKDXBsu/h9NcObKYlRkMAwR7JpIzIdgk1z7OJbJLgi+HxbQ==",
+  "dgSpecHash": "Z6PchmVqMg8EYehd4rFUW4cNsBv4NC61c0KubfQDV1qTp7c6Cn3CyYfggGKN8e2azT8Zl2UIlXLLekFaRyhj7Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj",
+  "projectFilePath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

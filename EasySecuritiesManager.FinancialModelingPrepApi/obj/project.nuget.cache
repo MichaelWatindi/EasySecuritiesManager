@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "f2sijTyGNiUs+nPt6BXHeiUqOBD11Ys+Fl5qN/3XCjQd7om5oWLzCbPI3US0tlzZU9nZ/XLEjKkTKW/Y/bBBiw==",
+  "dgSpecHash": "+nVuPD9hXLLwa7gbvjxKHWk5EvaStSDd5sohtwXkkQTA62xf+KHJI2Yu7ltGnMF64WX0vFsPuxtj8hvn9VGNKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.FinancialModelingPrepApi\\EasySecuritiesManager.FinancialModelingPrepApi.csproj",
+  "projectFilePath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.FinancialModelingPrepApi\\EasySecuritiesManager.FinancialModelingPrepApi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Mike\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\miket\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }
