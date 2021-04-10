@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Microsoft.AspNet.Identity.Core/2.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -1373,6 +1382,9 @@
       "EasySecuritiesManager.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.3"
+        },
         "compile": {
           "bin/placeholder/EasySecuritiesManager.Domain.dll": {}
         },
@@ -1412,6 +1424,19 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "sha512": "Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
+      "type": "package",
+      "path": "microsoft.aspnet.identity.core/2.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Core.xml",
+        "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
+        "microsoft.aspnet.identity.core.nuspec"
+      ]
+    },
     "Microsoft.CSharp/4.5.0": {
       "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
@@ -5363,25 +5388,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mike\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\miket\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.UI.Console\\EasySecuritiesManager.UI.Console.csproj",
+      "projectUniqueName": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.Console\\EasySecuritiesManager.UI.Console.csproj",
       "projectName": "EasySecuritiesManager.UI.Console",
-      "projectPath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.UI.Console\\EasySecuritiesManager.UI.Console.csproj",
-      "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.UI.Console\\obj\\",
+      "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.Console\\EasySecuritiesManager.UI.Console.csproj",
+      "packagesPath": "C:\\Users\\miket\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\miket\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -5394,14 +5419,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj"
+            "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj": {
+              "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj"
             },
-            "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj"
+            "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.EntityFramework\\EasySecuritiesManager.EntityFramework.csproj"
             },
-            "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.FinancialModelingPrepApi\\EasySecuritiesManager.FinancialModelingPrepApi.csproj": {
-              "projectPath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.FinancialModelingPrepApi\\EasySecuritiesManager.FinancialModelingPrepApi.csproj"
+            "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.FinancialModelingPrepApi\\EasySecuritiesManager.FinancialModelingPrepApi.csproj": {
+              "projectPath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.FinancialModelingPrepApi\\EasySecuritiesManager.FinancialModelingPrepApi.csproj"
             }
           }
         }
@@ -5430,8 +5455,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

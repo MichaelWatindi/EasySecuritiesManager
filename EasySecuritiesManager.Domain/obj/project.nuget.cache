@@ -1,8 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "oUZo2FSI8sFP16bvSNOA7NzSvT/aW5TEChqFfJfgKDXBsu/h9NcObKYlRkMAwR7JpIzIdgk1z7OJbJLgi+HxbQ==",
+  "dgSpecHash": "12gC0voqeNw0+wUJFN2oz3KkO3irJIA47FB3vSE9KHPf8WGUvZS4nNt3kn26gyfVQ/MrHHz84OnyGMTdYLA1WQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "projectFilePath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\miket\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

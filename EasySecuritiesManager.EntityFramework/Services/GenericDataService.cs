@@ -60,7 +60,7 @@ namespace EasySecuritiesManager.EntityFramework.Services
             }
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
             using (EasySecuritiesManagerDBContext context = _contextFactory.CreateDbContext())
             {

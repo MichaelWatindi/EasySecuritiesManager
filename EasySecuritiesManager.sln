@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySecuritiesManager.UI.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySecuritiesManager.UI.WPF", "EasySecuritiesManager.UI.WPF\EasySecuritiesManager.UI.WPF.csproj", "{FDE2AFF3-237B-48D2-A858-906DC2EE26D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySecuritiesManager.FinancialModelingPrepApi", "EasySecuritiesManager.FinancialModelingPrepApi\EasySecuritiesManager.FinancialModelingPrepApi.csproj", "{38E69F85-8142-47B5-9EDA-B0D1552AD835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySecuritiesManager.FinancialModelingPrepApi", "EasySecuritiesManager.FinancialModelingPrepApi\EasySecuritiesManager.FinancialModelingPrepApi.csproj", "{38E69F85-8142-47B5-9EDA-B0D1552AD835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySecuritiesManager.Tests.Domain", "EasySecuritiesManager.Tests.Domain\EasySecuritiesManager.Tests.Domain.csproj", "{A015C0F1-480F-45AD-98DD-36CC574CE563}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,18 @@ Global
 		{38E69F85-8142-47B5-9EDA-B0D1552AD835}.Release|x64.Build.0 = Release|Any CPU
 		{38E69F85-8142-47B5-9EDA-B0D1552AD835}.Release|x86.ActiveCfg = Release|Any CPU
 		{38E69F85-8142-47B5-9EDA-B0D1552AD835}.Release|x86.Build.0 = Release|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Debug|x64.Build.0 = Debug|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Debug|x86.Build.0 = Debug|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Release|x64.ActiveCfg = Release|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Release|x64.Build.0 = Release|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Release|x86.ActiveCfg = Release|Any CPU
+		{A015C0F1-480F-45AD-98DD-36CC574CE563}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

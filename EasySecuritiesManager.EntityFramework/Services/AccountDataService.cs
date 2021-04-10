@@ -20,6 +20,7 @@
  *  Modified 4/6/2021 3:07:23 AM
  */
 using EasySecuritiesManager.Domain.Models;
+using EasySecuritiesManager.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,28 +28,54 @@ using System.Threading.Tasks;
 
 namespace EasySecuritiesManager.EntityFramework.Services
 {
-    public class AccountDataService : GenericDataService<Account>
+    public class AccountDataService : GenericDataService<Account>, IAccountService
     {
         public AccountDataService( EasySecuritiesManagerDbContextFactory contextFactory ) 
             : base( contextFactory ) { }
 
-        public async Task<Account> GetWithAssetTransactionsAsync( int id )
+        public override async Task<Account> GetAsync( int id )
         {
             using ( EasySecuritiesManagerDBContext context = _contextFactory.CreateDbContext() )
             {
-                Account entity = await context.tAccounts.Include( a => a.AssetTransactions )
-                                                        .FirstOrDefaultAsync( e => e.Id == id );
+                Account entity = await context.tAccounts
+                                                .Include( a => a.AssetTransactions )
+                                                .Include( a => a.AccountHolder )
+                                                .FirstOrDefaultAsync( e => e.Id == id );
                 return entity;
             }
         }
 
-        public async Task<IEnumerable<Account>> GetWithAssetTransactionsAsync()
+        public override async Task<IEnumerable<Account>> GetAllAsync()
         {
             using ( EasySecuritiesManagerDBContext context = _contextFactory.CreateDbContext() )
             {
-                IEnumerable<Account> entities = await context.tAccounts.Include( a => a.AssetTransactions )
-                                                                       .ToListAsync();
+                IEnumerable<Account> entities = await context.tAccounts
+                                                                .Include( a => a.AssetTransactions )
+                                                                .Include( a => a.AccountHolder )
+                                                                .ToListAsync();
                 return entities;
+            }
+        }
+
+        public async Task<Account> GetByUserName( string username )
+        {
+            using (EasySecuritiesManagerDBContext context = _contextFactory.CreateDbContext())
+            {
+                return await context.tAccounts
+                                        .Include( a => a.AssetTransactions )
+                                        .Include( a => a.AccountHolder )
+                                        .FirstOrDefaultAsync( a => a.AccountHolder.Username == username ) ;                
+            }
+        }
+
+        public async Task<Account> GetByEmail( string email )
+        {
+            using (EasySecuritiesManagerDBContext context = _contextFactory.CreateDbContext())
+            {
+                return await context.tAccounts
+                                        .Include(a => a.AssetTransactions)
+                                        .Include( a => a.AccountHolder )
+                                        .FirstOrDefaultAsync( a => a.AccountHolder.Email == email );
             }
         }
     }
