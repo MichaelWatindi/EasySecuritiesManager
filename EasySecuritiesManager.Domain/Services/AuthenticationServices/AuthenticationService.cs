@@ -41,7 +41,9 @@ namespace EasySecuritiesManager.Domain.Services.AuthenticationServices
         public async Task<Account> Login( string usernameOrEmail, string password )
         {
             Account storedUserAcc   = await _accountService.GetByUserName( usernameOrEmail ) ;
-            Account storedEmailAcc  = await _accountService.GetByEmail( usernameOrEmail ) ;
+            // Account storedEmailAcc  = await _accountService.GetByEmail( usernameOrEmail ) ;
+
+            if ( storedUserAcc == null ) { throw new UserNotFoundException( usernameOrEmail ) ; }
 
             PasswordVerificationResult passwordResult = 
                 _passwordHasher.VerifyHashedPassword( storedUserAcc.AccountHolder.PasswordHash, password ) ; 

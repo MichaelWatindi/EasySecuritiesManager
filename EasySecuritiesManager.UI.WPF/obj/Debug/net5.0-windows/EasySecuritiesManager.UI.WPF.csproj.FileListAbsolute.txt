@@ -161,3 +161,5 @@ C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.UI.WP
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\BuyView.g.cs
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\BuyView.baml
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\bin\Debug\net5.0-windows\Microsoft.AspNet.Identity.Core.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\LoginView.g.cs
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\LoginView.baml

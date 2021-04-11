@@ -56,8 +56,7 @@ namespace EasySecuritiesManager.UI.WPF.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;V1.0.0.0;component/controls/navigationbarcontrol.xa" +
-                    "ml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;component/controls/navigationbarcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\NavigationBarControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

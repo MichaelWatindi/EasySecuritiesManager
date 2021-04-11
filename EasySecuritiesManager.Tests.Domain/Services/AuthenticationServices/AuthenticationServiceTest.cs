@@ -20,6 +20,7 @@
  *  Modified 4/9/2021 9:02:01 PM
  */
 
+using EasySecuritiesManager.Domain.Exceptions;
 using EasySecuritiesManager.Domain.Models;
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.Domain.Services.AuthenticationServices;
@@ -33,12 +34,19 @@ namespace EasySecuritiesManager.Tests.Domain.Services.AuthenticationServices
 {
     [TestFixture]
     public class AuthenticationServiceTest
-    {
+    {        
+        private Mock<IAccountService> _mockAccountService ;
+        private Mock<IPasswordHasher> _mockPasswordHasher ;
+        private AuthenticationService _authenticationService ;
+        
         [SetUp]
         public void Setup()
         {
-
+            _mockAccountService     = new Mock<IAccountService>() ;
+            _mockPasswordHasher     = new Mock<IPasswordHasher>() ;
+            _authenticationService  = new AuthenticationService( _mockAccountService.Object, _mockPasswordHasher.Object ) ;
         }
+
         // function name, scenario, with parameter should return
         [Test]
         public async Task Login_WithCorrectPasswordForExistingUser_ReturnAccountForCorrectUsername()
@@ -46,94 +54,93 @@ namespace EasySecuritiesManager.Tests.Domain.Services.AuthenticationServices
             // Arrange , act assert
             string expectedUsername = "testUser" ;
             string password         = "testPassword" ;
-            Mock<IAccountService> mockAccountService = new Mock<IAccountService>() ;
-            mockAccountService.Setup( s => s.GetByUserName( expectedUsername )).ReturnsAsync( new Account() { AccountHolder = new User() { Username = expectedUsername }}) ;
 
-            Mock<IPasswordHasher> mockPasswordHasher = new Mock<IPasswordHasher>() ;
-            mockPasswordHasher.Setup( s => s.VerifyHashedPassword( It.IsAny<string>(), password )).Returns( PasswordVerificationResult.Success );
+            _mockAccountService.Setup( s => s.GetByUserName( expectedUsername )).ReturnsAsync( new Account() { AccountHolder = new User() { Username = expectedUsername }}) ;
+            _mockPasswordHasher.Setup( s => s.VerifyHashedPassword( It.IsAny<string>(), password )).Returns( PasswordVerificationResult.Success );
 
-            AuthenticationService authService = new AuthenticationService( mockAccountService.Object, mockPasswordHasher.Object ) ;
-            Account account = await authService.Login( expectedUsername, password ) ;
+            Account account = await _authenticationService.Login( expectedUsername, password ) ;
 
             string actualUsername = account.AccountHolder.Username ;
             Assert.AreEqual( expectedUsername, actualUsername ) ;
         }
 
         [Test]
-        public async Task Login_WithIncorrectPasswordForExistingUser_ThrowsInvalidPasswordException()
+        public void Login_WithIncorrectPasswordForExistingUser_ThrowsInvalidPasswordException()
         {
             // Arrange , act assert
-            string expectedUsername = "testUser";
-            string password = "testPassword";
-            Mock<IAccountService> mockAccountService = new Mock<IAccountService>();
-            mockAccountService.Setup(s => s.GetByUserName(expectedUsername)).ReturnsAsync(new Account() { AccountHolder = new User() { Username = expectedUsername } });
+            string expectedUsername = "testUser" ;
+            string password         = "testPassword" ;
 
-            Mock<IPasswordHasher> mockPasswordHasher = new Mock<IPasswordHasher>();
-            mockPasswordHasher.Setup(s => s.VerifyHashedPassword(It.IsAny<string>(), password)).Returns(PasswordVerificationResult.Success);
+            _mockAccountService.Setup( s => s.GetByUserName( expectedUsername )).ReturnsAsync( new Account() { AccountHolder = new User() { Username = expectedUsername }}) ;
+            _mockPasswordHasher.Setup( s => s.VerifyHashedPassword( It.IsAny<string>(), password )).Returns( PasswordVerificationResult.Failed ) ;
 
-            AuthenticationService authService = new AuthenticationService(mockAccountService.Object, mockPasswordHasher.Object);
-            Account account = await authService.Login(expectedUsername, password);
+            //  Act & Assert
+            InvalidUsernameOrPasswordException invalidPassUsernameException = 
+                Assert.ThrowsAsync<InvalidUsernameOrPasswordException>( () => _authenticationService.Login( expectedUsername, password )) ;
 
-            string actualUsername = account.AccountHolder.Username;
-            Assert.AreEqual(expectedUsername, actualUsername);
+            string actualUsername = invalidPassUsernameException.Username ;
+            Assert.AreEqual( expectedUsername, actualUsername ) ;
         }
 
         [Test]
-        public async Task Login_WithCorrectPasswordForExistingUser_ReturnAccountForCorrectUsername2()
+        public void Login_WithNonExistentUsername_ThrowsInvalidUsernameOrPasswordException()
         {
             // Arrange , act assert
-            string expectedUsername = "testUser";
-            string password = "testPassword";
-            Mock<IAccountService> mockAccountService = new Mock<IAccountService>();
-            mockAccountService.Setup(s => s.GetByUserName(expectedUsername)).ReturnsAsync(new Account() { AccountHolder = new User() { Username = expectedUsername } });
+            string expectedUsername = "testUser" ;
+            string password         = "testPassword" ;
 
-            Mock<IPasswordHasher> mockPasswordHasher = new Mock<IPasswordHasher>();
-            mockPasswordHasher.Setup(s => s.VerifyHashedPassword(It.IsAny<string>(), password)).Returns(PasswordVerificationResult.Success);
+            _mockPasswordHasher.Setup( s => s.VerifyHashedPassword( It.IsAny<string>(), password )).Returns( PasswordVerificationResult.Failed ) ;
 
-            AuthenticationService authService = new AuthenticationService(mockAccountService.Object, mockPasswordHasher.Object);
-            Account account = await authService.Login(expectedUsername, password);
+            //  Act & Assert
+            UserNotFoundException userNotFoundException = 
+                Assert.ThrowsAsync<UserNotFoundException>( () => _authenticationService.Login( expectedUsername, password )) ;
 
-            string actualUsername = account.AccountHolder.Username;
-            Assert.AreEqual(expectedUsername, actualUsername);
+            string actualUsername = userNotFoundException.Username ;
+            Assert.AreEqual( expectedUsername, actualUsername ) ;
+        }
+        
+        [Test]
+        public async Task Register_WithPasswordsNotMatching_ReturnsPasswordsDoNotMatchResultEnum()
+        {
+            
+            string password         = "testPassword" ;
+            string confirmPassword  = "confirmPassword" ;
+
+            RegistrationResult actual           = await _authenticationService.Register( It.IsAny<string>(), It.IsAny<string>(), password, confirmPassword ) ;
+            RegistrationResult excpectedResult  = RegistrationResult.PasswordsDoNotMatch ;
+
+            Assert.AreEqual( excpectedResult, actual ) ;
         }
 
         [Test]
-        public async Task Login_WithCorrectPasswordForExistingUser_ReturnAccountForCorrectUsername3()
+        public async Task Register_WithAlreadyExistingEmail_ReturnsEmailAlreadyExistsResultEnum()
         {
-            // Arrange , act assert
-            string expectedUsername = "testUser";
-            string password = "testPassword";
-            Mock<IAccountService> mockAccountService = new Mock<IAccountService>();
-            mockAccountService.Setup(s => s.GetByUserName(expectedUsername)).ReturnsAsync(new Account() { AccountHolder = new User() { Username = expectedUsername } });
+            string email = "test@gmail.com" ;
+            _mockAccountService.Setup( s => s.GetByEmail( email )).ReturnsAsync( new Account());
+            RegistrationResult actual           = await _authenticationService.Register( email, It.IsAny<string>(), "test", "test" );
+            RegistrationResult excpectedResult  = RegistrationResult.EmailAlreadyExists ;
 
-            Mock<IPasswordHasher> mockPasswordHasher = new Mock<IPasswordHasher>();
-            mockPasswordHasher.Setup(s => s.VerifyHashedPassword(It.IsAny<string>(), password)).Returns(PasswordVerificationResult.Success);
-
-            AuthenticationService authService = new AuthenticationService(mockAccountService.Object, mockPasswordHasher.Object);
-            Account account = await authService.Login(expectedUsername, password);
-
-            string actualUsername = account.AccountHolder.Username;
-            Assert.AreEqual(expectedUsername, actualUsername);
+            Assert.AreEqual( excpectedResult, actual ) ;
         }
 
         [Test]
-        public async Task Login_WithCorrectPasswordForExistingUser_ReturnAccountForCorrectUsername4()
+        public async Task Register_WithAlreadyExistingUsername_ReturnsUsernameAlreadyExistsResultEnum()
         {
-            // Arrange , act assert
-            string expectedUsername = "testUser";
-            string password = "testPassword";
-            Mock<IAccountService> mockAccountService = new Mock<IAccountService>();
-            mockAccountService.Setup(s => s.GetByUserName(expectedUsername)).ReturnsAsync(new Account() { AccountHolder = new User() { Username = expectedUsername } });
+           string username = "test" ;
+            _mockAccountService.Setup( s => s.GetByUserName( username )).ReturnsAsync( new Account() );
+            RegistrationResult actual           = await _authenticationService.Register( It.IsAny<string>(), username,  "test", "test" );
+            RegistrationResult excpectedResult  = RegistrationResult.UsernameAlreadyExists ;
 
-            Mock<IPasswordHasher> mockPasswordHasher = new Mock<IPasswordHasher>();
-            mockPasswordHasher.Setup(s => s.VerifyHashedPassword(It.IsAny<string>(), password)).Returns(PasswordVerificationResult.Success);
-
-            AuthenticationService authService = new AuthenticationService(mockAccountService.Object, mockPasswordHasher.Object);
-            Account account = await authService.Login(expectedUsername, password);
-
-            string actualUsername = account.AccountHolder.Username;
-            Assert.AreEqual(expectedUsername, actualUsername);
+            Assert.AreEqual( excpectedResult, actual ) ;
         }
 
+        [Test]
+        public async Task Register_WithNewUserValidCredentials_ReturnsSuccessResultEnum()
+        {
+            RegistrationResult actual           = await _authenticationService.Register( It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>() );
+            RegistrationResult excpectedResult  = RegistrationResult.Success ;
+
+            Assert.AreEqual( excpectedResult, actual );
+        }
     }
 }

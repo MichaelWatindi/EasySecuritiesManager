@@ -65,3 +65,6 @@ C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecu
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.Console\obj\Debug\net5.0\ref\EasySecuritiesManager.UI.Console.dll
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.Console\obj\Debug\net5.0\EasySecuritiesManager.UI.Console.pdb
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.Console\obj\Debug\net5.0\EasySecuritiesManager.UI.Console.genruntimeconfig.cache
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.Console\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.Console\bin\Debug\net5.0\EasySecuritiesManager.FinancialModelingPrepApi.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.Console\bin\Debug\net5.0\EasySecuritiesManager.FinancialModelingPrepApi.pdb

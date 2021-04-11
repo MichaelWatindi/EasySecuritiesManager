@@ -5,6 +5,7 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.EntityFramework;
 using EasySecuritiesManager.EntityFramework.Services;
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
+using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
@@ -62,8 +63,11 @@ namespace EasySecuritiesManager.UI.WPF
             services.AddSingleton<IEasySecuritiesManagerViewModelFactory<HomeViewModel>, HomeViewModelFactory>() ;
             services.AddSingleton<IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>() ;
             services.AddSingleton<IEasySecuritiesManagerViewModelFactory<MajorIndexListingViewModel>, MajorIndexListingViewModelFactory>() ;
+            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<LoginViewModel>, LoginViewModelFactory>() ;
 
             services.AddScoped<INavigator, Navigator>();
+            services.AddScoped<IAuthenticator, Authenticator>();
+
             services.AddScoped<MainViewModel>() ;
             services.AddScoped<BuyViewModel>() ;
             

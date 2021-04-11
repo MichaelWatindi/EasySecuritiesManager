@@ -19,6 +19,7 @@
  *  Created 4/2/2021 4:31:50 PM
  *  Modified 4/2/2021 4:31:50 PM
  */
+using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using System;
 
@@ -26,12 +27,14 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public INavigator Navigator { get; set ; } 
+        public INavigator       Navigator       { get; set ; }
+        public IAuthenticator   Authenticator   { get; }
 
-        public MainViewModel( INavigator navigator )
+        public MainViewModel( INavigator navigator, IAuthenticator authenticator )
         {
-            Navigator = navigator ;
-            Navigator.UpdateCurrentViewModelCommand.Execute( ViewType.Home ) ;
+            Navigator       = navigator ;
+            Authenticator   = authenticator;
+            Navigator.UpdateCurrentViewModelCommand.Execute( ViewType.Login ) ;
         }       
     }
 }

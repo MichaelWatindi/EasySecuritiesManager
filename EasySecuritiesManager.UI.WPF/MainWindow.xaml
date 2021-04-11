@@ -14,8 +14,20 @@
         </Grid.RowDefinitions>
         
         <!--Navigation Bar-->
-        <controls:NavigationBarControl Grid.Row="0" DataContext="{Binding Navigator}"/>
-                
+        <Grid Grid.Row="0">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Authenticator.IsLoggedIn}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+
+            <controls:NavigationBarControl  DataContext="{Binding Navigator}"/>
+        </Grid>
+
         <!--Content of Main Window-->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <ContentControl Content="{Binding Navigator.CurrentViewModel}"/>

@@ -7,9 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\login-background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EasySecuritiesManager.Domain\EasySecuritiesManager.Domain.csproj" />
     <ProjectReference Include="..\EasySecuritiesManager.EntityFramework\EasySecuritiesManager.EntityFramework.csproj" />
     <ProjectReference Include="..\EasySecuritiesManager.FinancialModelingPrepApi\EasySecuritiesManager.FinancialModelingPrepApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\login-background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

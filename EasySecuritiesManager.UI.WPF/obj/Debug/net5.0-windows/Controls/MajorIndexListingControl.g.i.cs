@@ -53,8 +53,7 @@ namespace EasySecuritiesManager.UI.WPF.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;V1.0.0.0;component/controls/majorindexlistingcontro" +
-                    "l.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;component/controls/majorindexlistingcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\MajorIndexListingControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

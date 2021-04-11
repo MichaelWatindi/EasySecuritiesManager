@@ -30,14 +30,17 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
         private readonly IEasySecuritiesManagerViewModelFactory<HomeViewModel>      _homeViewModelFactory ;
         private readonly IEasySecuritiesManagerViewModelFactory<PortfolioViewModel> _portFolioViewModelFactory ;
         private readonly BuyViewModel                                               _buyViewModel;
+        private readonly IEasySecuritiesManagerViewModelFactory<LoginViewModel>     _loginViewModelFactory;
 
-        public EasySecuritiesManagerRootViewModelFactory(   IEasySecuritiesManagerViewModelFactory<HomeViewModel>       homeViewModelFactory, 
-                                                                IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>  portFolioViewModelFactory,
-                                                                BuyViewModel                                                buyViewModel )
+        public EasySecuritiesManagerRootViewModelFactory(   IEasySecuritiesManagerViewModelFactory<HomeViewModel>       homeViewModelFactory ,
+                                                            IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>  portFolioViewModelFactory ,
+                                                            BuyViewModel                                                buyViewModel , 
+                                                            IEasySecuritiesManagerViewModelFactory<LoginViewModel>      loginViewModel )
         {
-            _homeViewModelFactory       = homeViewModelFactory;
-            _portFolioViewModelFactory  = portFolioViewModelFactory;
-            _buyViewModel               = buyViewModel;
+            _homeViewModelFactory       = homeViewModelFactory ;
+            _portFolioViewModelFactory  = portFolioViewModelFactory ;
+            _buyViewModel               = buyViewModel ;
+            _loginViewModelFactory      = loginViewModel ;
         }
 
         public ViewModelBase CreateViewModel( ViewType viewType )
@@ -52,6 +55,10 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
 
                 case ViewType.Buy:
                     return _buyViewModel ;
+
+                case ViewType.Login:
+                    return _loginViewModelFactory.CreateViewModel() ;
+
                 default:
                     throw new ArgumentException( "The ViewType does not have a ViewModel.", "viewType" );
             }

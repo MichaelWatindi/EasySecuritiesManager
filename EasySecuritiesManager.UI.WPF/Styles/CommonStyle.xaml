@@ -8,12 +8,13 @@
     <SolidColorBrush x:Key="BrushPrimaryLightBase" Color="{StaticResource ColorPrimaryLightBase}"/>
     <SolidColorBrush x:Key="BrushPrimaryDarkBase" Color="{StaticResource ColorPrimaryDarkBase}"/>
     
-    <!--Text Box-->
-    <Style TargetType="TextBox">
+    <!--Control of textbox style input controls-->
+    <Style x:Key="TextBoxBase" TargetType="Control">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
+                <ControlTemplate TargetType="Control">
                     <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5">
                         <!--Single-ton custom control series-->
                         <!--Text box class will receive the style, Will look for content host and fill all things in that part-->
@@ -23,7 +24,13 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <!--Text box style-->
+    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBase}"/>
+
+    <!--Password box style-->
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource TextBoxBase}"/>
+
     <!--Buttons-->
     <Style TargetType="Button">
         <Setter Property="Background" Value="{StaticResource BrushPrimaryDarkBase}"/>
