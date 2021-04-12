@@ -16,25 +16,16 @@
  *  Copyright (c) 2021 Tindi Systems Inc.
  *  All Rights Reserved.
  *  
- *  Created 4/2/2021 7:28:25 PM
- *  Modified 4/2/2021 7:28:25 PM
+ *  Created 4/12/2021 1:55:07 AM
+ *  Modified 4/12/2021 1:55:07 AM
  */
 
-using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
-using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.State.Navigators
 {
-    public enum ViewType
+    public interface IRenavigator
     {
-        Home,
-        Portfolio,
-        Buy,
-        Login
-    }
-    public interface INavigator
-    {
-        ViewModelBase   CurrentViewModel                { get ; set ; }
+        void Renavigate() ;
     }
 }

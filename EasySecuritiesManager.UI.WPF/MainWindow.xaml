@@ -25,7 +25,7 @@
                 </Style>
             </Grid.Style>
 
-            <controls:NavigationBarControl  DataContext="{Binding Navigator}"/>
+            <controls:NavigationBarControl />
         </Grid>
 
         <!--Content of Main Window-->

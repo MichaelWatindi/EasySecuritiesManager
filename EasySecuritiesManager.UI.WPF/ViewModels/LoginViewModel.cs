@@ -21,6 +21,7 @@
  */
 using EasySecuritiesManager.UI.WPF.Commands;
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
+using EasySecuritiesManager.UI.WPF.State.Navigators;
 using System;
 using System.Windows.Input;
 
@@ -41,9 +42,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public ICommand LoginCommand { get ; }
 
-        public LoginViewModel( IAuthenticator authenticator )
+        public LoginViewModel( IAuthenticator authenticator, IRenavigator renavigator )
         {
-            LoginCommand = new LoginCommand( this, authenticator ) ;
+            LoginCommand = new LoginCommand( this, authenticator, renavigator ) ;
         }
 
     }

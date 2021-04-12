@@ -38,23 +38,34 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
+            <!--Home Radio Button-->
             <RadioButton Grid.Column="0" 
                          Content="Home" 
-                         IsChecked="{Binding CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:HomeViewModel}}" 
+                         IsChecked="{Binding Navigator.CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:HomeViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" 
                          CommandParameter="{x:Static nav:ViewType.Home}"/>
+
+            <!--Portfolio Radio Button-->
             <RadioButton Grid.Column="1" 
                          Content="Portfolio" 
-                         IsChecked="{Binding CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:PortfolioViewModel}}" 
+                         IsChecked="{Binding Navigator.CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:PortfolioViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" 
                          CommandParameter="{x:Static nav:ViewType.Portfolio}"/>
+
+            <!--Buy Radio Button-->
             <RadioButton Grid.Column="2" 
                          Content="Buy" 
-                         IsChecked="{Binding CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:BuyViewModel}}" 
+                         IsChecked="{Binding Navigator.CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:BuyViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" 
                          CommandParameter="{x:Static nav:ViewType.Buy}"/>
+
+            <!--Sell Radio Button-->
             <RadioButton Grid.Column="3" Content="Sell"/>
+
+            <!--Space maker-->
             <TextBlock Grid.Column="4" Text=" "/>
+
+            <!--Settings Radio Button-->
             <RadioButton Grid.Column="5" Content="⚙"/>
         </Grid>
     </Grid>

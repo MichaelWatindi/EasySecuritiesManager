@@ -63,7 +63,12 @@ namespace EasySecuritiesManager.UI.WPF
             services.AddSingleton<IEasySecuritiesManagerViewModelFactory<HomeViewModel>, HomeViewModelFactory>() ;
             services.AddSingleton<IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>() ;
             services.AddSingleton<IEasySecuritiesManagerViewModelFactory<MajorIndexListingViewModel>, MajorIndexListingViewModelFactory>() ;
-            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<LoginViewModel>, LoginViewModelFactory>() ;
+
+            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<LoginViewModel>>((services) => 
+                new LoginViewModelFactory( 
+                    services.GetRequiredService<IAuthenticator>(), 
+                    new ViewModelFactoryRenavigator<HomeViewModel>( services.GetRequiredService<INavigator>(), 
+                                                                    services.GetRequiredService<IEasySecuritiesManagerViewModelFactory<HomeViewModel>>()))) ;
 
             services.AddScoped<INavigator, Navigator>();
             services.AddScoped<IAuthenticator, Authenticator>();

@@ -19,22 +19,29 @@
  *  Created 4/2/2021 4:31:50 PM
  *  Modified 4/2/2021 4:31:50 PM
  */
+using EasySecuritiesManager.UI.WPF.Commands;
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
+using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
 using System;
+using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public INavigator       Navigator       { get; set ; }
-        public IAuthenticator   Authenticator   { get; }
+        public INavigator       Navigator               { get; set ; }
+        public IAuthenticator   Authenticator           { get; }
+        public IEasySecuritiesRootManagerViewModelFactory ViewModelFactory { get; }
+        public ICommand         UpdateCurrentViewModelCommand  { get;  }
 
-        public MainViewModel( INavigator navigator, IAuthenticator authenticator )
+        public MainViewModel( INavigator navigator, IAuthenticator authenticator, IEasySecuritiesRootManagerViewModelFactory viewModelFactory )
         {
             Navigator       = navigator ;
             Authenticator   = authenticator;
-            Navigator.UpdateCurrentViewModelCommand.Execute( ViewType.Login ) ;
+            ViewModelFactory = viewModelFactory;
+            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand( navigator, viewModelFactory );
+            UpdateCurrentViewModelCommand.Execute( ViewType.Login ) ;
         }       
     }
 }

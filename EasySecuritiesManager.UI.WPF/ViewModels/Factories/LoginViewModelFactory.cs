@@ -20,21 +20,25 @@
  *  Modified 4/11/2021 7:54:37 AM
  */
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
+using EasySecuritiesManager.UI.WPF.State.Navigators;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
 {
     public class LoginViewModelFactory : IEasySecuritiesManagerViewModelFactory<LoginViewModel>
     {
         private readonly IAuthenticator _authenticator ;
+        private readonly IRenavigator   _renavigator;
 
-        public LoginViewModelFactory( IAuthenticator authenticator )
+        public LoginViewModelFactory(   IAuthenticator  authenticator, 
+                                        IRenavigator    renavigator )
         {
-            _authenticator = authenticator;
+            _authenticator  = authenticator;
+            _renavigator    = renavigator;
         }
 
         public LoginViewModel CreateViewModel()
         {
-            return new LoginViewModel( _authenticator ) ;
+            return new LoginViewModel( _authenticator, _renavigator ) ;
         }
     }
 }

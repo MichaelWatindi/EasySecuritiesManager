@@ -24,8 +24,6 @@ using EasySecuritiesManager.UI.WPF.Commands;
 using EasySecuritiesManager.UI.WPF.Models;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
-using System;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.State.Navigators
@@ -33,12 +31,7 @@ namespace EasySecuritiesManager.UI.WPF.State.Navigators
     public class Navigator : ObservableObject, INavigator
     {
         private ViewModelBase   _currentViewModel ;
-        public ICommand         UpdateCurrentViewModelCommand { get ; set ; }
-        public Navigator( IEasySecuritiesRootManagerViewModelFactory viewModelFactory )
-        {
-            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand( this, viewModelFactory ) ;
-        }
-
+        
         public ViewModelBase    CurrentViewModel  
         { 
             get { return _currentViewModel ; } 

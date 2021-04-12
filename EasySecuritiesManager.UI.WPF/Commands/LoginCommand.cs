@@ -20,6 +20,7 @@
  *  Modified 4/11/2021 10:56:57 AM
  */
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
+using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
 using System.Windows.Input;
@@ -29,12 +30,15 @@ namespace EasySecuritiesManager.UI.WPF.Commands
     public class LoginCommand : ICommand
     {
         private readonly IAuthenticator _authenticator ;
+        private readonly IRenavigator   _reNavigator;
         private readonly LoginViewModel _loginViewModel ;
 
         public LoginCommand( LoginViewModel loginViewModel,
-                             IAuthenticator authenticator )
+                             IAuthenticator authenticator, 
+                             IRenavigator   navigator )
         {
             _authenticator  = authenticator ;
+            _reNavigator    = navigator;
             _loginViewModel = loginViewModel ;
         }
 
@@ -44,7 +48,12 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 
         public async void Execute( object parameter )
         {
-            bool success = await _authenticator.Login(_loginViewModel.Username, parameter.ToString() ) ;
+            bool success = await _authenticator.Login( _loginViewModel.Username, parameter.ToString() ) ;
+
+            if ( success )
+            {
+                _reNavigator.Renavigate() ;
+            }
         }
     }
 }
