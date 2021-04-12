@@ -6,6 +6,7 @@ using EasySecuritiesManager.EntityFramework;
 using EasySecuritiesManager.EntityFramework.Services;
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
+using EasySecuritiesManager.UI.WPF.State.Assets;
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
@@ -58,9 +59,11 @@ namespace EasySecuritiesManager.UI.WPF
 
             services.AddSingleton<BuyViewModel>() ;
             services.AddSingleton<PortfolioViewModel>() ;
+            services.AddSingleton<AssetSummaryViewModel>() ;
             services.AddSingleton<HomeViewModel>( services => 
             { 
-               return new HomeViewModel( MajorIndexListingViewModel.LoadMajorIndexViewModel( services.GetRequiredService<IMajorIndexService>())) ;
+               return new HomeViewModel( MajorIndexListingViewModel.LoadMajorIndexViewModel( services.GetRequiredService<IMajorIndexService>() ), 
+                                                                                             services.GetRequiredService<AssetSummaryViewModel>() ) ;
             }) ;
             
 
@@ -86,11 +89,10 @@ namespace EasySecuritiesManager.UI.WPF
                                                  services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>() );
             });
 
-
-
             services.AddSingleton<INavigator, Navigator>();
             services.AddSingleton<IAuthenticator, Authenticator>();
             services.AddSingleton<IAccountStore, AccountStore>() ;
+            services.AddSingleton<AssetStore>() ;
 
             services.AddScoped<MainViewModel>() ;
             services.AddScoped<BuyViewModel>() ;
