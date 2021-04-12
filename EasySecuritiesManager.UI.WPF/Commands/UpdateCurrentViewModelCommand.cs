@@ -32,10 +32,10 @@ namespace EasySecuritiesManager.UI.WPF.Commands
     {
         public  event    EventHandler    CanExecuteChanged;
         private readonly INavigator      _navigator ;
-        private readonly IEasySecuritiesRootManagerViewModelFactory _viewModelFactory ;
+        private readonly IViewModelFactory _viewModelFactory ;
             
         public UpdateCurrentViewModelCommand(INavigator navigator, 
-                IEasySecuritiesRootManagerViewModelFactory viewModelFactory)
+                IViewModelFactory viewModelFactory)
         {
             _navigator          = navigator;
             _viewModelFactory   = viewModelFactory;

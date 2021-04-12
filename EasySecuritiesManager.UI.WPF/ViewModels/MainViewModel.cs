@@ -30,18 +30,34 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public INavigator       Navigator               { get; set ; }
-        public IAuthenticator   Authenticator           { get; }
-        public IEasySecuritiesRootManagerViewModelFactory ViewModelFactory { get; }
-        public ICommand         UpdateCurrentViewModelCommand  { get;  }
+        private readonly INavigator     _navigator ;
+        private readonly IAuthenticator _authenticator ;
 
-        public MainViewModel( INavigator navigator, IAuthenticator authenticator, IEasySecuritiesRootManagerViewModelFactory viewModelFactory )
+        public bool                 IsLoggedIn => _authenticator.IsLoggedIn ;
+        public ViewModelBase        CurrentViewModel => _navigator.CurrentViewModel ;
+        public IViewModelFactory    ViewModelFactory { get; }
+        public ICommand             UpdateCurrentViewModelCommand  { get;  }
+
+        public MainViewModel( INavigator navigator, IAuthenticator authenticator, IViewModelFactory viewModelFactory )
         {
-            Navigator       = navigator ;
-            Authenticator   = authenticator;
-            ViewModelFactory = viewModelFactory;
-            UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand( navigator, viewModelFactory );
+            _navigator                      = navigator ;
+            _authenticator                  = authenticator;
+            ViewModelFactory                = viewModelFactory;
+
+            _navigator.StateChanged         += Navigator_StateChanged ;
+            _authenticator.StateChanged     += Authenticator_StateChanged;
+            UpdateCurrentViewModelCommand   = new UpdateCurrentViewModelCommand( navigator, viewModelFactory );
             UpdateCurrentViewModelCommand.Execute( ViewType.Login ) ;
+        }
+
+        private void Authenticator_StateChanged()
+        {
+            OnPropertyChanged( nameof( IsLoggedIn )) ;
         }       
+
+        private void Navigator_StateChanged()
+        {
+            OnPropertyChanged( nameof( CurrentViewModel )) ;
+        }
     }
 }

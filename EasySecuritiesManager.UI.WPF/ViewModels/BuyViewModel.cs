@@ -22,6 +22,7 @@
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.Commands;
+using EasySecuritiesManager.UI.WPF.State.Accounts;
 using System;
 using System.Windows.Input;
 
@@ -75,10 +76,12 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         }
         public decimal TotalPrice => SharesToBuy * StockPrice ;
 
-        public BuyViewModel( IGetStockPriceService stockPriceService, IBuyStockService buyStockService )
+        public BuyViewModel(    IGetStockPriceService   stockPriceService, 
+                                IBuyStockService        buyStockService, 
+                                IAccountStore           accountStore )
         {
             SearchSymbolCommand = new SearchSymbolCommand( this, stockPriceService ) ;
-            BuyStockCommand     = new BuyStockCommand( this, buyStockService ) ;
+            BuyStockCommand     = new BuyStockCommand( this, buyStockService, accountStore ) ;
         }
 
     }

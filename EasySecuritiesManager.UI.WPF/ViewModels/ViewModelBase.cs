@@ -20,10 +20,11 @@
  *  Modified 4/2/2021 4:32:34 PM
  */
 using EasySecuritiesManager.UI.WPF.Models;
-using System;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
+    public delegate TViewModel CreateViewModel<TViewModel>() where TViewModel : ViewModelBase ;
+
     public class ViewModelBase : ObservableObject
     {
     }

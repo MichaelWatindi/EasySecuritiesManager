@@ -1,4 +1,4 @@
-﻿/**
+/**
  *  Tindi Systems Inc
  *  $specifiedsolutionname$ $projectname$
  *  See Copyright file at the top of the source tree.
@@ -6,7 +6,7 @@
  *  This product includes software developed by the 
  *  Tindi Systems
  *
- *  @file $filename$
+ *  @file $filename
  *
  *  @brief
  *
@@ -16,16 +16,16 @@
  *  Copyright (c) 2021 Tindi Systems Inc.
  *  All Rights Reserved.
  *  
- *  Created 4/8/2021 4:31:50 PM
- *  Modified 4/8/2021 4:31:50 PM
+ *  Created 4/8/2021 5:14:02 AM
+ *  Modified 4/8/2021 5:14:02 AM
  */
+
+using EasySecuritiesManager.UI.WPF.State.Navigators;
+
 namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
 {
-    public class PortfolioViewModelFactory : IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>
+    public interface IViewModelFactory
     {
-        public PortfolioViewModel CreateViewModel()
-        {
-            return new PortfolioViewModel() ;
-        }
+        ViewModelBase CreateViewModel( ViewType viewType ) ;
     }
 }

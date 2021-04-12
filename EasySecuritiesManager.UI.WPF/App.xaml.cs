@@ -5,6 +5,7 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.EntityFramework;
 using EasySecuritiesManager.EntityFramework.Services;
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
+using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
@@ -12,12 +13,7 @@ using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace EasySecuritiesManager.UI.WPF
@@ -58,20 +54,43 @@ namespace EasySecuritiesManager.UI.WPF
             services.AddSingleton<IPasswordHasher, PasswordHasher>() ;
 
             services.AddSingleton<IMajorIndexService, MajorIndexService>() ;
+            services.AddSingleton<IViewModelFactory, ViewModelFactory>() ;
 
-            services.AddSingleton<IEasySecuritiesRootManagerViewModelFactory, EasySecuritiesManagerRootViewModelFactory>() ;            
-            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<HomeViewModel>, HomeViewModelFactory>() ;
-            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<PortfolioViewModel>, PortfolioViewModelFactory>() ;
-            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<MajorIndexListingViewModel>, MajorIndexListingViewModelFactory>() ;
+            services.AddSingleton<BuyViewModel>() ;
+            services.AddSingleton<PortfolioViewModel>() ;
+            services.AddSingleton<HomeViewModel>( services => 
+            { 
+               return new HomeViewModel( MajorIndexListingViewModel.LoadMajorIndexViewModel( services.GetRequiredService<IMajorIndexService>())) ;
+            }) ;
+            
 
-            services.AddSingleton<IEasySecuritiesManagerViewModelFactory<LoginViewModel>>((services) => 
-                new LoginViewModelFactory( 
-                    services.GetRequiredService<IAuthenticator>(), 
-                    new ViewModelFactoryRenavigator<HomeViewModel>( services.GetRequiredService<INavigator>(), 
-                                                                    services.GetRequiredService<IEasySecuritiesManagerViewModelFactory<HomeViewModel>>()))) ;
+            services.AddSingleton<CreateViewModel<HomeViewModel>>( services =>
+            {
+                return () => services.GetRequiredService<HomeViewModel>();
+            }) ;
 
-            services.AddScoped<INavigator, Navigator>();
-            services.AddScoped<IAuthenticator, Authenticator>();
+            services.AddSingleton<CreateViewModel<BuyViewModel>>( services =>
+            {
+                return () => services.GetRequiredService<BuyViewModel>();
+            });
+
+            services.AddSingleton<CreateViewModel<PortfolioViewModel>>( services =>
+            {
+                return () => services.GetRequiredService<PortfolioViewModel>();
+            });
+
+            services.AddSingleton<ViewModelDelegateRenavigator<HomeViewModel>>() ;
+            services.AddSingleton<CreateViewModel<LoginViewModel>>( services =>
+            {
+                return () => new LoginViewModel( services.GetRequiredService<IAuthenticator>(), 
+                                                 services.GetRequiredService<ViewModelDelegateRenavigator<HomeViewModel>>() );
+            });
+
+
+
+            services.AddSingleton<INavigator, Navigator>();
+            services.AddSingleton<IAuthenticator, Authenticator>();
+            services.AddSingleton<IAccountStore, AccountStore>() ;
 
             services.AddScoped<MainViewModel>() ;
             services.AddScoped<BuyViewModel>() ;

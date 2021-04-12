@@ -21,6 +21,7 @@
  */
 using EasySecuritiesManager.Domain.Models;
 using EasySecuritiesManager.Domain.Services.TransactionServices;
+using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,33 +32,31 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 {
     public class BuyStockCommand : ICommand
     {
-        public event EventHandler   CanExecuteChanged;
-        private BuyViewModel        _buyViewModel ;
-        private IBuyStockService    _buyStockService ;
+        public  event       EventHandler        CanExecuteChanged;
+        private readonly    BuyViewModel        _buyViewModel ;
+        private readonly    IBuyStockService    _buyStockService ;
+        private readonly    IAccountStore       _accountStore;
 
         public BuyStockCommand( BuyViewModel        buyViewModel, 
-                                IBuyStockService    buyStockService )
+                                IBuyStockService    buyStockService,
+                                IAccountStore       accountStore )
         {
             _buyViewModel       = buyViewModel;
             _buyStockService    = buyStockService;
+            _accountStore       = accountStore;
         }
 
         public bool CanExecute( object parameter ) => true ; 
       
         public async void Execute( object parameter )
         {
-            try 
-            {
-                Account account = await _buyStockService.BuyStock( new Domain.Models.Account()
-                {
-                    Id = 1 ,
-                    Balance = 500,
-                    AssetTransactions = new List<AssetTransaction>() ,
-
-                }, _buyViewModel.Symbol, _buyViewModel.SharesToBuy ) ;
+            try {
+                Account account = await _buyStockService.BuyStock(  _accountStore.CurrentAccount,  
+                                                                    _buyViewModel.Symbol, 
+                                                                    _buyViewModel.SharesToBuy ) ;
+                _accountStore.CurrentAccount = account ;
             }
-            catch ( Exception e )
-            {
+            catch ( Exception e )  {
                 MessageBox.Show( e.Message ) ;
             }
         }

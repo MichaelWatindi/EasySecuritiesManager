@@ -22,43 +22,48 @@
 using EasySecuritiesManager.Domain.Models;
 using EasySecuritiesManager.Domain.Services.AuthenticationServices;
 using EasySecuritiesManager.UI.WPF.Models;
+using EasySecuritiesManager.UI.WPF.State.Accounts;
 using System;
 using System.Threading.Tasks;
 
 namespace EasySecuritiesManager.UI.WPF.State.Authenticators
 {
-    public class Authenticator : ObservableObject, IAuthenticator
+    public class Authenticator : IAuthenticator
     {
         private readonly    IAuthenticationService _authenticationService ;
-
-        private Account     _currentUser ;
-        public Account      CurrentUser 
+        private readonly    IAccountStore          _accountStore;
+        
+        public Account      CurrentAccount 
         { 
-            get => _currentUser ; 
-            private set {
-                _currentUser = value ;
-                OnPropertyChanged( nameof( CurrentUser )) ;
-                OnPropertyChanged( nameof( IsLoggedIn )) ;
+            get => _accountStore.CurrentAccount ; 
+            private set { 
+                _accountStore.CurrentAccount = value ;
+                StateChanged?.Invoke() ;
             }
+            
         }
-        public bool         IsLoggedIn => CurrentUser != null;
+        public bool         IsLoggedIn => CurrentAccount != null;
 
-        public Authenticator( IAuthenticationService authenticationService )
+        public event Action StateChanged;
+
+        public Authenticator(   IAuthenticationService  authenticationService, 
+                                IAccountStore           accountStore )
         {
-            _authenticationService = authenticationService;
+            _authenticationService  = authenticationService ;
+            _accountStore           = accountStore ;
         }     
 
         public async Task<bool> Login( string username, string password )
         {
             try {
-                CurrentUser = await _authenticationService.Login( username, password );
+                CurrentAccount = await _authenticationService.Login( username, password );
                 return true ; 
-            } catch ( Exception e ) {
+            } catch ( Exception  ) {
                 return false ; 
             }
         }
 
-        public void Logout() => CurrentUser = null ;        
+        public void Logout() => CurrentAccount = null ;        
 
         public async Task<RegistrationResult> Register( string email, 
                                                         string username, 

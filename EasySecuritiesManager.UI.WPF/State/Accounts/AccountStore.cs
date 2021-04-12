@@ -16,15 +16,16 @@
  *  Copyright (c) 2021 Tindi Systems Inc.
  *  All Rights Reserved.
  *  
- *  Created 4/8/2021 5:23:08 AM
- *  Modified 4/8/2021 5:23:08 AM
+ *  Created 4/12/2021 4:44:19 AM
+ *  Modified 4/12/2021 4:44:19 AM
  */
+using EasySecuritiesManager.Domain.Models;
 using System;
 
-namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
+namespace EasySecuritiesManager.UI.WPF.State.Accounts
 {
-    public interface IEasySecuritiesManagerViewModelFactory<T> where T : ViewModelBase
+    public class AccountStore : IAccountStore
     {
-        T CreateViewModel() ;
+        public Account CurrentAccount { get; set; }
     }
 }

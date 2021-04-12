@@ -29,10 +29,14 @@ namespace EasySecuritiesManager.UI.WPF.State.Authenticators
 {
     public interface IAuthenticator
     {
-        Account CurrentUser { get ; }
-        bool    IsLoggedIn { get ; }
+        Account         CurrentAccount { get ; }
+        bool            IsLoggedIn { get ; }
+        event   Action  StateChanged ;
 
-        Task<RegistrationResult> Register( string email, string username, string passwork, string confirmPassword ) ;
+        Task<RegistrationResult> Register(  string email, 
+                                            string username, 
+                                            string passwork, 
+                                            string confirmPassword ) ;
         Task<bool> Login (string username, string password ) ;
         void Logout() ;
     }

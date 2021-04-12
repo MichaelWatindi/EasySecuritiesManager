@@ -20,27 +20,25 @@
  *  Modified 4/12/2021 1:56:46 AM
  */
 using EasySecuritiesManager.UI.WPF.ViewModels;
-using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
-using System;
 
 namespace EasySecuritiesManager.UI.WPF.State.Navigators
 {
-    
-    public class ViewModelFactoryRenavigator<TViewModel> : IRenavigator where TViewModel : ViewModelBase
-    {
-        private readonly INavigator _navigator ;
-        private readonly IEasySecuritiesManagerViewModelFactory<TViewModel> _viemModelFactory ;
 
-        public ViewModelFactoryRenavigator(INavigator           navigator, 
-            IEasySecuritiesManagerViewModelFactory<TViewModel>  viemModelFactory)
+    public class ViewModelDelegateRenavigator<TViewModel> : IRenavigator where TViewModel : ViewModelBase
+    {
+        private readonly INavigator                     _navigator ;
+        private readonly CreateViewModel<TViewModel>    _createViewModel ;
+
+        public ViewModelDelegateRenavigator( INavigator                  navigator, 
+                                             CreateViewModel<TViewModel> createViewModel)
         {
             _navigator          = navigator;
-            _viemModelFactory   = viemModelFactory;
+            _createViewModel    = createViewModel;
         }
 
         public void Renavigate()
         {
-            _navigator.CurrentViewModel = _viemModelFactory.CreateViewModel() ;
+            _navigator.CurrentViewModel = _createViewModel() ;
         }
     }
 }
