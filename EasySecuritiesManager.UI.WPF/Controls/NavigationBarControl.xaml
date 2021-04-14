@@ -17,9 +17,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <!-- Simple Trader Banner-->
-        <TextBlock Grid.Row="0" Padding="10" FontSize="28" Foreground="White" Text="Easy Securities Manager" Background="{StaticResource BrushPrimaryLightBase}"/>
+
+        <Grid Grid.Row="0" Background="{StaticResource BrushPrimaryLightBase}">
+            <!-- Simple Trader Banner-->
+            <TextBlock MaxWidth="1000" Grid.Row="0" Padding="10" FontSize="28" Foreground="White" Text="Easy Securities Manager" />
+        </Grid>        
         
         <!--Tabs-->
         <Grid Grid.Row="1" RenderOptions.EdgeMode="Aliased" Background="{StaticResource BrushPrimaryDarkBase}">

@@ -24,7 +24,6 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 

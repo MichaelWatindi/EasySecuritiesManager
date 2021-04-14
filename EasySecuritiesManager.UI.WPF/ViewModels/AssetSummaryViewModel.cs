@@ -16,9 +16,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public AssetSummaryViewModel( AssetStore assetStore )
         {
-            _assetStore = assetStore;
-            _assets     = new ObservableCollection<AssetViewModel>() ;
-            _assetStore.StateChanged += AssetStore_StateChanged ;
+            _assetStore                 = assetStore;
+            _assets                     = new ObservableCollection<AssetViewModel>() ;
+            _assetStore.StateChanged    += AssetStore_StateChanged ;
             ResetAssets() ;
         }
 
@@ -33,7 +33,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             IEnumerable<AssetViewModel> assetViewModels = 
                 _assetStore.AssetTransactions
                         .GroupBy( t => t.TheAsset.Symbol )
-                        .Select( g => new AssetViewModel( g.Key, g.Sum( a => a.IsPurchase?  a.Shares : a.Shares )));
+                        .Select( g => new AssetViewModel( g.Key, g.Sum( a => a.IsPurchase?  a.Shares : - a.Shares )))
+                        .Where( a => a.Shares > 0 )
+                        .OrderByDescending( a => a.Shares );
             _assets.Clear() ;
 
             foreach( AssetViewModel viewModel in assetViewModels )

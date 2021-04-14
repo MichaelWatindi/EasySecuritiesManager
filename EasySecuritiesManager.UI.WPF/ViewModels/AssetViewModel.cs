@@ -1,13 +1,13 @@
 ﻿namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
-    public class AssetViewModel 
+    public class AssetViewModel : ViewModelBase
     {
-        public string Symbol { get; }
-        public int Shares { get; }
+        public string   Symbol { get; }
+        public int      Shares { get; }
 
         public AssetViewModel(string symbol, int shares)
         {
-            Symbol = symbol;
+            Symbol = symbol.ToUpper() ;
             Shares = shares;
         }
     }
