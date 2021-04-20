@@ -26,7 +26,7 @@ namespace EasySecuritiesManager.Domain.Models
     public class Account : DomainObject
     {
         public User                             AccountHolder       { get; set; }
-        public decimal                          Balance             { get; set; }
+        public decimal                          Balance             { get; set; } = 0.0M ;
         public ICollection<AssetTransaction>    AssetTransactions   { get; set; }        
     }
 }
