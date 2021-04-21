@@ -76,9 +76,6 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         }
         public decimal TotalPrice => SharesToBuy * StockPrice ;
 
-        public MessageViewModel ErrorMessageViewModel { get; }
-        public MessageViewModel StatusMessageViewModel { get; }
-
         public BuyViewModel(    IGetStockPriceService   stockPriceService, 
                                 IBuyStockService        buyStockService, 
                                 IAccountStore           accountStore )

@@ -19,6 +19,7 @@
  *  Created 4/8/2021 5:58:33 PM
  *  Modified 4/8/2021 5:58:33 PM
  */
+using EasySecuritiesManager.Domain.Exceptions;
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
@@ -48,9 +49,12 @@ namespace EasySecuritiesManager.UI.WPF.Commands
                 decimal stockPrice              = await _stockPriceService.GetPrice(_viewModel.Symbol);
                 _viewModel.SearchResultSymbol   = _viewModel.Symbol.ToUpper() ;
                 _viewModel.StockPrice           = stockPrice ;
-            }
-            catch ( Exception e )  {
+
+            } catch ( InvalidSymbolException ) {
+                _viewModel.ErrorMessageViewModel.Message = "Symbol does not exist" ;
+            } catch ( Exception e )  {
                 MessageBox.Show( e.Message ) ;
+                _viewModel.ErrorMessageViewModel.Message = "Failed to get symbol information";
             }
         }
     }
