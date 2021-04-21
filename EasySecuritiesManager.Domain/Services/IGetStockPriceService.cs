@@ -20,12 +20,20 @@
  *  Modified 4/3/2021 11:12:39 PM
  */
 
-using System.Threading.Tasks;
+using System.Threading.Tasks ;
+using EasySecuritiesManager.Domain.Exceptions ;
 
 namespace EasySecuritiesManager.Domain.Services
 {
     public interface IGetStockPriceService
     {
-        Task<decimal> GetPrice( string symbol ) ;
+        /// <summary>
+        /// Get the share price for a stock
+        /// </summary>
+        /// <param name="symbol">The symbol of the stock we want to buy</param>
+        /// <returns>The current price of the stock.</returns>
+        /// <exception cref="InvalidSymbolException">Thrown if the symbol does not exist.</exception>
+        /// <exception cref="Exception">Thrown if getting the symbol fails.</exception>
+        Task<decimal> GetPrice( string symbol );
     }
 }

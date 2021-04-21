@@ -21,12 +21,24 @@
  */
 
 using EasySecuritiesManager.Domain.Models;
+using EasySecuritiesManager.Domain.Exceptions;
+using System;
 using System.Threading.Tasks;
 
 namespace EasySecuritiesManager.Domain.Services.TransactionServices
 {
     public interface IBuyStockService
     {
+        /// <summary>
+        /// Purchase a stock for an account
+        /// </summary>
+        /// <param name="buyer"></param>
+        /// <param name="stock"></param>
+        /// <param name="shares"></param>
+        /// <returns>The updated account</returns>
+        /// <exception cref="InsufficientFundsException">Thrown if the account has insufficient funds to make the purchase</exception>
+        /// <exception cref="InvalidSymbolException">Thrown if the account has insufficient funds to make the purchase</exception>
+        /// <exception cref="Exception">Thrown if the account has insufficient funds to make the purchase</exception>
         Task<Account> BuyStock( Account buyer, string stock, int shares ) ; 
     }
 }

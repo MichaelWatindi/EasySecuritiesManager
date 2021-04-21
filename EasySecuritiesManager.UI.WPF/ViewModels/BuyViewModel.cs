@@ -19,11 +19,11 @@
  *  Created 4/2/2021 7:25:12 PM
  *  Modified 4/2/2021 7:25:12 PM
  */
+
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.Commands;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
-using System;
 using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
@@ -76,12 +76,17 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         }
         public decimal TotalPrice => SharesToBuy * StockPrice ;
 
+        public MessageViewModel ErrorMessageViewModel { get; }
+        public MessageViewModel StatusMessageViewModel { get; }
+
         public BuyViewModel(    IGetStockPriceService   stockPriceService, 
                                 IBuyStockService        buyStockService, 
                                 IAccountStore           accountStore )
         {
-            SearchSymbolCommand = new SearchSymbolCommand( this, stockPriceService ) ;
-            BuyStockCommand     = new BuyStockCommand( this, buyStockService, accountStore ) ;
+            SearchSymbolCommand     = new SearchSymbolCommand( this, stockPriceService ) ;
+            BuyStockCommand         = new BuyStockCommand( this, buyStockService, accountStore ) ;
+            ErrorMessageViewModel   = new MessageViewModel() ;
+            StatusMessageViewModel  = new MessageViewModel() ;
         }
 
     }

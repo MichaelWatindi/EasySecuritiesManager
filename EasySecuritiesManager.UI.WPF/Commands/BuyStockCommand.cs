@@ -19,6 +19,7 @@
  *  Created 4/8/2021 7:13:59 PM
  *  Modified 4/8/2021 7:13:59 PM
  */
+using EasySecuritiesManager.Domain.Exceptions;
 using EasySecuritiesManager.Domain.Models;
 using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
@@ -49,15 +50,30 @@ namespace EasySecuritiesManager.UI.WPF.Commands
       
         public async void Execute( object parameter )
         {
-            try {
+            _buyViewModel.ErrorMessageViewModel.Message = string.Empty ;
+            _buyViewModel.StatusMessageViewModel.Message = string.Empty ;
+
+            try
+            {
+                string symbol   = _buyViewModel.Symbol ;
+                int shares      = _buyViewModel.SharesToBuy ;
                 Account account = await _buyStockService.BuyStock(  _accountStore.CurrentAccount,  
                                                                     _buyViewModel.Symbol, 
                                                                     _buyViewModel.SharesToBuy ) ;
-                _accountStore.CurrentAccount = account ;
+                _accountStore.CurrentAccount                    = account ;
+                _buyViewModel.StatusMessageViewModel.Message    = $"Successfully bought {shares} share(s) of {symbol}." ;
             }
-            catch ( Exception e )  {
-                MessageBox.Show( e.Message ) ;
+            catch ( InsufficientFundsException ) 
+            {
+                _buyViewModel.ErrorMessageViewModel.Message = "Account has insufficient funds.";
+            } catch ( InvalidSymbolException  ) 
+            {
+                _buyViewModel.ErrorMessageViewModel.Message = "Symbol could not be found.";
+            } catch ( Exception )  
+            {
+                _buyViewModel.ErrorMessageViewModel.Message = "Transaction Failed" ;
             }
+            bool bought = _buyViewModel.ErrorMessageViewModel.HasMessage ;
         }
     }
 }
