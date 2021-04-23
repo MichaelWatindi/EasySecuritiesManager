@@ -46,12 +46,12 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             get { return _nasdaq; }
             set
             {
-                _nasdaq = value;
+                _nasdaq = value ;
                 OnPropertyChanged( nameof( Nasdaq ) );
             }
         }
 
-        private MajorIndex _sp500;
+        private MajorIndex _sp500 ;
         public MajorIndex SP500
         {
             get { return _sp500; }
@@ -76,25 +76,25 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         private void LoadMajorIndices()
         {            
-            _majorIndexService.GetMajorIndex(MajorIndexType.DowJones).ContinueWith(task =>
+            _majorIndexService.GetMajorIndex( MajorIndexType.DowJones ).ContinueWith( task =>
             {
-                if ( task.Exception == null)
+                if ( task.Exception == null )
                 {
                     DowJones = task.Result ;
                 }
             });
-            _majorIndexService.GetMajorIndex(MajorIndexType.NasDaq).ContinueWith(task =>
+            _majorIndexService.GetMajorIndex( MajorIndexType.NasDaq ).ContinueWith( task =>
             {
-                if (task.Exception == null)
+                if ( task.Exception == null )
                 {
-                    Nasdaq = task.Result;
+                    Nasdaq = task.Result ;
                 }
             });
-            _majorIndexService.GetMajorIndex(MajorIndexType.SP500).ContinueWith(task =>
+            _majorIndexService.GetMajorIndex( MajorIndexType.SP500 ).ContinueWith( task =>
             {
-                if (task.Exception == null)
+                if ( task.Exception == null )
                 {
-                    SP500 = task.Result;
+                    SP500 = task.Result ;
                 }
             });
         }

@@ -33,9 +33,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public string Username
         {
-            get => _username; 
+            get => _username ; 
             set { 
-                _username = value; 
+                _username = value ; 
                 OnPropertyChanged( nameof( Username )) ;
             }
         }

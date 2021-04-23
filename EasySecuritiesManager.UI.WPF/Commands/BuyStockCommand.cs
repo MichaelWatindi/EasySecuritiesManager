@@ -25,14 +25,14 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.Commands
 {
-    public class BuyStockCommand : ICommand
+    public class BuyStockCommand : AsyncCommandBase
     {
-        public  event       EventHandler        CanExecuteChanged;
         private readonly    BuyViewModel        _buyViewModel ;
         private readonly    IBuyStockService    _buyStockService ;
         private readonly    IAccountStore       _accountStore;
@@ -45,13 +45,11 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             _buyStockService    = buyStockService;
             _accountStore       = accountStore;
         }
-
-        public bool CanExecute( object parameter ) => true ; 
       
-        public async void Execute( object parameter )
+        public override async Task ExecuteAsync( object parameter )
         {
-            _buyViewModel.ErrorMessageViewModel.Message = string.Empty ;
-            _buyViewModel.StatusMessageViewModel.Message = string.Empty ;
+            _buyViewModel.ErrorMessageViewModel.Message     = string.Empty ;
+            _buyViewModel.StatusMessageViewModel.Message    = string.Empty ;
 
             try
             {

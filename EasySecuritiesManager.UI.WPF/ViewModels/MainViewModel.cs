@@ -23,7 +23,6 @@ using EasySecuritiesManager.UI.WPF.Commands;
 using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
-using System;
 using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
@@ -35,20 +34,20 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public bool                 IsLoggedIn => _authenticator.IsLoggedIn ;
         public ViewModelBase        CurrentViewModel => _navigator.CurrentViewModel ;
-        public IViewModelFactory    ViewModelFactory { get; }
-        public ICommand             UpdateCurrentViewModelCommand  { get;  }
+        public IViewModelFactory    ViewModelFactory { get ; }
+        public ICommand             UpdateCurrentViewModelCommand  { get ;  }
 
         public MainViewModel(   INavigator          navigator, 
                                 IAuthenticator      authenticator, 
                                 IViewModelFactory   viewModelFactory ) : base() 
         {
             _navigator                      = navigator ;
-            _authenticator                  = authenticator;
-            ViewModelFactory                = viewModelFactory;
+            _authenticator                  = authenticator ;
+            ViewModelFactory                = viewModelFactory ;
 
             _navigator.StateChanged         += Navigator_StateChanged ;
-            _authenticator.StateChanged     += Authenticator_StateChanged;
-            UpdateCurrentViewModelCommand   = new UpdateCurrentViewModelCommand( navigator, viewModelFactory );
+            _authenticator.StateChanged     += Authenticator_StateChanged ;
+            UpdateCurrentViewModelCommand   = new UpdateCurrentViewModelCommand( navigator, viewModelFactory ) ;
             UpdateCurrentViewModelCommand.Execute( ViewType.Login ) ;
         }
 

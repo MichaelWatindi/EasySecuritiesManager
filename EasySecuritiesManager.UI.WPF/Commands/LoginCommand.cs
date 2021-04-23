@@ -23,11 +23,12 @@ using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.Commands
 {
-    public class LoginCommand : ICommand
+    public class LoginCommand : AsyncCommandBase
     {
         private readonly IAuthenticator _authenticator ;
         private readonly IRenavigator   _reNavigator;
@@ -40,14 +41,11 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             _authenticator  = authenticator ;
             _reNavigator    = navigator;
             _loginViewModel = loginViewModel ;
-        }
+        }    
 
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute( object parameter ) => true ;       
-
-        public async void Execute( object parameter )
+        public override async Task ExecuteAsync( object parameter )
         {
+            _loginViewModel.ErrorMessageViewModel.Message = string.Empty ;
             bool success = await _authenticator.Login( _loginViewModel.Username, parameter.ToString() ) ;
 
             if ( success ) { 

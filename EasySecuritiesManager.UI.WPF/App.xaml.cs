@@ -13,6 +13,7 @@ using EasySecuritiesManager.UI.WPF.ViewModels;
 using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
 using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Configuration;
 using System.Windows;
@@ -23,7 +24,18 @@ namespace EasySecuritiesManager.UI.WPF
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {       
+    {
+        private readonly IHost _host ;
+
+        public App()
+        {
+            _host = Host.CreateDefaultBuilder().Build() ;
+        }
+
+        public static IHostBuilder CreateHostBuilder( string[] args )
+        {
+            return null ;
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             //  Get configuration settings

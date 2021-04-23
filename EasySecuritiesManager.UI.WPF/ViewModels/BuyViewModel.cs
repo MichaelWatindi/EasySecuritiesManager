@@ -30,13 +30,13 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class BuyViewModel : ViewModelBase
     {       
-        public ICommand SearchSymbolCommand { get; set; }
-        public ICommand BuyStockCommand { get; set; }
+        public ICommand SearchSymbolCommand { get ; set ; }
+        public ICommand BuyStockCommand     { get ; set ; }
          
         private string _symbol;
         public string Symbol
         {
-            get => _symbol; 
+            get => _symbol ; 
             set { 
                 _symbol = value;
                 OnPropertyChanged( nameof( Symbol )) ;
@@ -49,8 +49,8 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             get => _stockPrice;
             set {
                 _stockPrice = value;
-                OnPropertyChanged( nameof( StockPrice ));
-                OnPropertyChanged( nameof( TotalPrice ));
+                OnPropertyChanged( nameof( StockPrice )) ;
+                OnPropertyChanged( nameof( TotalPrice )) ;
             }
         }
 
@@ -60,18 +60,18 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             get => _sharesToBuy;
             set {
                 _sharesToBuy = value;
-                OnPropertyChanged( nameof( SharesToBuy ));
-                OnPropertyChanged( nameof( TotalPrice ));
+                OnPropertyChanged( nameof( SharesToBuy )) ;
+                OnPropertyChanged( nameof( TotalPrice )) ;
             }
         }
 
         private string _searchResultSymbol = string.Empty ;
         public string SearchResultSymbol
         {
-            get => _searchResultSymbol;
+            get => _searchResultSymbol ;
             set {
-                _searchResultSymbol = value;
-                OnPropertyChanged( nameof( SearchResultSymbol ));
+                _searchResultSymbol = value ;
+                OnPropertyChanged( nameof( SearchResultSymbol )) ;
             }
         }
         public decimal TotalPrice => SharesToBuy * StockPrice ;

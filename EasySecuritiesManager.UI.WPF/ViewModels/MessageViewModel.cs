@@ -20,7 +20,6 @@
  *  Modified 4/21/2021 4:12:01 AM
  */
 using EasySecuritiesManager.UI.WPF.Models;
-using System;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
@@ -30,14 +29,14 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public string Message
         {
-            get => _message;
+            get => _message ;
             set {
-                _message = value;
-                OnPropertyChanged( nameof( Message ));
-                OnPropertyChanged( nameof( HasMessage ));
+                _message = value ;
+                OnPropertyChanged( nameof( Message )) ;
+                OnPropertyChanged( nameof( HasMessage )) ;
             }
         }
 
-        public bool HasMessage => !string.IsNullOrEmpty( Message );
+        public bool HasMessage => !string.IsNullOrEmpty( Message ) ;
     }
 }

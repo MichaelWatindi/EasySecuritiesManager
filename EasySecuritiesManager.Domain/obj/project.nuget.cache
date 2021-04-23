@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "12gC0voqeNw0+wUJFN2oz3KkO3irJIA47FB3vSE9KHPf8WGUvZS4nNt3kn26gyfVQ/MrHHz84OnyGMTdYLA1WQ==",
+  "dgSpecHash": "Qyd5kWYe7g7GIXb8YF8yZytw1CMyjW4csP1S3AR1EYMovIb84tNl1GwPozhuGzR+xP3BEeZTrdJdr2JJv6UYow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Mike\\Documents\\GitHub\\EasySecuritiesManager\\EasySecuritiesManager.Domain\\EasySecuritiesManager.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\miket\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
+    "C:\\Users\\Mike\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512"
   ],
   "logs": [
     {
