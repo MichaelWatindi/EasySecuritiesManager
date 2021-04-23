@@ -30,22 +30,23 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi
 {
     public class FinancialModelingPrepHttpClient : HttpClient
     {
-        public FinancialModelingPrepHttpClient()
-        {
-            this.BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;
-        }
+        public FinancialModelingPrepHttpClient() => 
+            this.BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;        
 
         public async Task<T> GetAsync<T>( string uri ) where T : class
         {
             HttpResponseMessage response = await GetAsync( uri ) ;
             string jsonResponse = await response.Content.ReadAsStringAsync() ;
 
+            if ( jsonResponse == "" || jsonResponse == "[]" )
+            {
+                throw new Exception() ;
+            }
+
             List<T> entityCollection = JsonConvert.DeserializeObject<List<T>>( jsonResponse ) ;
             if ( !entityCollection.Any() ) { return null ; }
 
-            return entityCollection[ 0 ] ;
-            
-
+            return entityCollection[ 0 ] ; 
         }
      }
 }

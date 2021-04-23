@@ -43,9 +43,8 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 
                 StockPriceResult stockPriceResult = await client.GetAsync<StockPriceResult>( uriSuffix ) ;
 
-                if ( stockPriceResult.Price == 0 ) 
-                {   
-                    // return 1 ;
+                if ( stockPriceResult.Price == 0 ) {   
+                    
                     throw new InvalidSymbolException( symbol ) ; 
                 }
 

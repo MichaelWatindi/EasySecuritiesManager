@@ -5,7 +5,7 @@
         public string   Symbol { get; }
         public int      Shares { get; }
 
-        public AssetViewModel(string symbol, int shares)
+        public AssetViewModel(string symbol, int shares) : base() 
         {
             Symbol = symbol.ToUpper() ;
             Shares = shares;

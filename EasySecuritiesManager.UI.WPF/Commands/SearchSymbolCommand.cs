@@ -23,27 +23,25 @@ using EasySecuritiesManager.Domain.Exceptions;
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.Commands
 {
-    class SearchSymbolCommand : ICommand
+    class SearchSymbolCommand : AsyncCommandBase
     {
         private readonly BuyViewModel           _viewModel;
         private readonly IGetStockPriceService  _stockPriceService;
-
-        public event EventHandler CanExecuteChanged;
+       
         public SearchSymbolCommand( BuyViewModel            viewModel, 
                                     IGetStockPriceService   stockPriceService )
         {
-            _viewModel = viewModel;
-            _stockPriceService = stockPriceService;
+            _viewModel          = viewModel;
+            _stockPriceService  = stockPriceService;
         }
 
-        public bool CanExecute( object parameter ) => true ;
-
-        public async void Execute( object parameter )
+        public override async Task ExecuteAsync( object parameter )
         {
             try {
                 decimal stockPrice              = await _stockPriceService.GetPrice(_viewModel.Symbol);
@@ -51,9 +49,10 @@ namespace EasySecuritiesManager.UI.WPF.Commands
                 _viewModel.StockPrice           = stockPrice ;
 
             } catch ( InvalidSymbolException ) {
+
                 _viewModel.ErrorMessageViewModel.Message = "Symbol does not exist" ;
             } catch ( Exception e )  {
-                MessageBox.Show( e.Message ) ;
+
                 _viewModel.ErrorMessageViewModel.Message = "Failed to get symbol information";
             }
         }

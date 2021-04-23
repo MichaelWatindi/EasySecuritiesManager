@@ -25,5 +25,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
+        public SettingsViewModel() : base() 
+        {
+
+        }
     }
 }

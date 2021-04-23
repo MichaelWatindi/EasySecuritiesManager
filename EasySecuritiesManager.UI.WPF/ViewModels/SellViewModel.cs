@@ -25,5 +25,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class SellViewModel : ViewModelBase
     {
+        public SellViewModel() : base()
+        {
+
+        }
     }
 }

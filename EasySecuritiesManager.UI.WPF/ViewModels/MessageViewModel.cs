@@ -19,11 +19,12 @@
  *  Created 4/21/2021 4:12:01 AM
  *  Modified 4/21/2021 4:12:01 AM
  */
+using EasySecuritiesManager.UI.WPF.Models;
 using System;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
-    public class MessageViewModel : ViewModelBase
+    public class MessageViewModel : ObservableObject
     {
         private string _message ;
 

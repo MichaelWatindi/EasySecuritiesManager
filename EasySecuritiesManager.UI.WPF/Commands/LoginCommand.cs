@@ -50,9 +50,10 @@ namespace EasySecuritiesManager.UI.WPF.Commands
         {
             bool success = await _authenticator.Login( _loginViewModel.Username, parameter.ToString() ) ;
 
-            if ( success )
-            {
-                _reNavigator.Renavigate() ;
+            if ( success ) { 
+                _reNavigator.Renavigate() ; 
+            } else {
+                _loginViewModel.ErrorMessageViewModel.Message = "Login Failed. Invalid username or password." ;
             }
         }
     }

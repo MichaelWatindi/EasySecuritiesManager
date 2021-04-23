@@ -38,7 +38,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         public IViewModelFactory    ViewModelFactory { get; }
         public ICommand             UpdateCurrentViewModelCommand  { get;  }
 
-        public MainViewModel( INavigator navigator, IAuthenticator authenticator, IViewModelFactory viewModelFactory )
+        public MainViewModel(   INavigator          navigator, 
+                                IAuthenticator      authenticator, 
+                                IViewModelFactory   viewModelFactory ) : base() 
         {
             _navigator                      = navigator ;
             _authenticator                  = authenticator;

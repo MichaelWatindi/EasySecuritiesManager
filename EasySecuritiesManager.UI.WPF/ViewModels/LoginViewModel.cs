@@ -42,7 +42,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public ICommand LoginCommand { get ; }
 
-        public LoginViewModel( IAuthenticator authenticator, IRenavigator renavigator )
+        public LoginViewModel( IAuthenticator authenticator, IRenavigator renavigator ) : base() 
         {
             LoginCommand = new LoginCommand( this, authenticator, renavigator ) ;
         }

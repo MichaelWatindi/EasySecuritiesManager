@@ -25,5 +25,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class PortfolioViewModel : ViewModelBase
     {
+        public PortfolioViewModel() : base() 
+        {
+
+        }
     }
 }

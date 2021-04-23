@@ -14,7 +14,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         public  decimal                     AccountBalance  => _assetStore.AccountBalance ;
         public IEnumerable<AssetViewModel>  Assets          => _assets ;
 
-        public AssetSummaryViewModel( AssetStore assetStore )
+        public AssetSummaryViewModel( AssetStore assetStore ) : base()
         {
             _assetStore                 = assetStore;
             _assets                     = new ObservableCollection<AssetViewModel>() ;

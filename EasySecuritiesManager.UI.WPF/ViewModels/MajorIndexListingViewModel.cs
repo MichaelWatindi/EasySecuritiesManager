@@ -62,7 +62,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             }
         }
 
-        public MajorIndexListingViewModel( IMajorIndexService majorIndexService )
+        public MajorIndexListingViewModel( IMajorIndexService majorIndexService ) : base() 
         {
             _majorIndexService = majorIndexService;
         }

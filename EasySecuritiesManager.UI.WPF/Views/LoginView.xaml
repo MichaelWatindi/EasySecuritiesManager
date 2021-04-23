@@ -10,6 +10,10 @@
     <UserControl.Background>
         <ImageBrush ImageSource="/Resources/login-background.jpg" Stretch="UniformToFill" Opacity="0.2"/>
     </UserControl.Background>
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     
     <Border HorizontalAlignment="Center" 
             VerticalAlignment="Center"
@@ -81,6 +85,13 @@
                         Margin="10"
                         Content="Login"                
                         Click="btnLogin_Click"/>
+
+                <TextBlock Grid.Row="3"
+                           HorizontalAlignment="Center"
+                           DataContext="{Binding ErrorMessageViewModel}"
+                           Foreground="DarkRed"
+                           Text="{Binding Message}"
+                           Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             </Grid>
 
         </Grid>

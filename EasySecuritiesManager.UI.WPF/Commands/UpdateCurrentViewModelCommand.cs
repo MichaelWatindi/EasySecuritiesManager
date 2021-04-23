@@ -30,12 +30,12 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 {
     public class UpdateCurrentViewModelCommand : ICommand
     {
-        public  event    EventHandler    CanExecuteChanged;
-        private readonly INavigator      _navigator ;
-        private readonly IViewModelFactory _viewModelFactory ;
+        public  event    EventHandler       CanExecuteChanged;
+        private readonly INavigator         _navigator ;
+        private readonly IViewModelFactory  _viewModelFactory ;
             
-        public UpdateCurrentViewModelCommand(INavigator navigator, 
-                IViewModelFactory viewModelFactory)
+        public UpdateCurrentViewModelCommand(   INavigator          navigator, 
+                                                IViewModelFactory   viewModelFactory)
         {
             _navigator          = navigator;
             _viewModelFactory   = viewModelFactory;
@@ -51,7 +51,6 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             if ( parameter is ViewType )
             {
                 ViewType viewType = ( ViewType ) parameter ;
-
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel( viewType ) ;
             }
         }

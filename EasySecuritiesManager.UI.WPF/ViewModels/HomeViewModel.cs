@@ -28,7 +28,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         public MajorIndexListingViewModel   IndicesListingViewModel     { get;  }
         public AssetSummaryViewModel        TheAssetSummaryViewModel    { get ; }
         public HomeViewModel(   MajorIndexListingViewModel  majorIndexViewModel,
-                                AssetSummaryViewModel       assetSummaryViewModel )
+                                AssetSummaryViewModel       assetSummaryViewModel ) : base() 
         {
             IndicesListingViewModel     = majorIndexViewModel ;
             TheAssetSummaryViewModel    = assetSummaryViewModel ;
