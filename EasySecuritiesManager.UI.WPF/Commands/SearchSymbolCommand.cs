@@ -51,7 +51,7 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             } catch ( InvalidSymbolException ) {
 
                 _viewModel.ErrorMessageViewModel.Message = "Symbol does not exist" ;
-            } catch ( Exception e )  {
+            } catch ( Exception )  {
 
                 _viewModel.ErrorMessageViewModel.Message = "Failed to get symbol information";
             }

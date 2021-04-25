@@ -32,9 +32,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         private readonly INavigator     _navigator ;
         private readonly IAuthenticator _authenticator ;
 
-        public bool                 IsLoggedIn => _authenticator.IsLoggedIn ;
-        public ViewModelBase        CurrentViewModel => _navigator.CurrentViewModel ;
-        public IViewModelFactory    ViewModelFactory { get ; }
+        public bool                 IsLoggedIn          => _authenticator.IsLoggedIn ;
+        public ViewModelBase        CurrentViewModel    => _navigator.CurrentViewModel ;
+        public IViewModelFactory    ViewModelFactory    { get ; }
         public ICommand             UpdateCurrentViewModelCommand  { get ;  }
 
         public MainViewModel(   INavigator          navigator, 

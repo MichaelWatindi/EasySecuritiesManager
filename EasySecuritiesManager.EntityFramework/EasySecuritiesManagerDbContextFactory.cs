@@ -25,12 +25,19 @@ using System;
 
 namespace EasySecuritiesManager.EntityFramework
 {
-    public class EasySecuritiesManagerDbContextFactory : IDesignTimeDbContextFactory<EasySecuritiesManagerDBContext>
+    public class EasySecuritiesManagerDbContextFactory 
     {
-        public EasySecuritiesManagerDBContext CreateDbContext( string[] args = null )
+        private readonly string _connectionString ;
+
+        public EasySecuritiesManagerDbContextFactory( string connectionString )
+        {
+            _connectionString = connectionString ;
+        }
+
+        public EasySecuritiesManagerDBContext CreateDbContext(  )
         {
             var options = new DbContextOptionsBuilder<EasySecuritiesManagerDBContext>() ;
-            options.UseSqlServer("Data Source=.;Initial Catalog=EasySecuritiesManager;Integrated Security=True");
+            options.UseSqlServer( _connectionString ) ;
 
             return new EasySecuritiesManagerDBContext( options.Options ) ;
         }

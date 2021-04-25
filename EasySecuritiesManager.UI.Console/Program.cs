@@ -12,10 +12,10 @@ namespace EasySecuritiesManager.UI.Consoles
     {
         static void Main(string[] args)
         {
-            IDataService<User> userService = new GenericDataService<User>(new EasySecuritiesManagerDbContextFactory() ) ;
-            // userService.CreateAsync( new User { Username = "Test", Email = "Test@gmail.com", PasswordHash = Guid.NewGuid().ToString() } ).Wait() ;
-            Console.WriteLine( userService.GetAllAsync().Result.Count() ) ;
-            Console.WriteLine( userService.GetAsync( 2 ).Result ) ;
+            //IDataService<User> userService = new GenericDataService<User>(new EasySecuritiesManagerDbContextFactory() ) ;
+            //// userService.CreateAsync( new User { Username = "Test", Email = "Test@gmail.com", PasswordHash = Guid.NewGuid().ToString() } ).Wait() ;
+            //Console.WriteLine( userService.GetAllAsync().Result.Count() ) ;
+            //Console.WriteLine( userService.GetAsync( 2 ).Result ) ;
             System.Console.WriteLine( "" ) ;
         }
 

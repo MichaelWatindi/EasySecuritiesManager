@@ -40,11 +40,16 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             }
         }
 
-        public ICommand LoginCommand { get ; }
+        public ICommand LoginCommand        { get ; }
+        public ICommand ViewRegisterCommand { get ; }
 
-        public LoginViewModel( IAuthenticator authenticator, IRenavigator renavigator ) : base() 
+        public LoginViewModel(  IAuthenticator  authenticator , 
+                                IRenavigator    loginRenavigator ,
+                                IRenavigator    registerRenavigator ) : base() 
         {
-            LoginCommand = new LoginCommand( this, authenticator, renavigator ) ;
+            ErrorMessageViewModel   = new MessageViewModel() ;
+            LoginCommand            = new LoginCommand( this, authenticator, loginRenavigator ) ;
+            ViewRegisterCommand     = new RenavigateCommand( registerRenavigator ) ;
         }
 
     }

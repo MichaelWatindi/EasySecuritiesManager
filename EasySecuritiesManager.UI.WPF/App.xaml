@@ -33,6 +33,11 @@
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
                 <views:LoginView LoginCommand="{Binding LoginCommand}"/>
             </DataTemplate>
+
+            <!--Data Template that maps the RegisterView to the RegisterViewModel-->
+            <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
+                <views:RegisterView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

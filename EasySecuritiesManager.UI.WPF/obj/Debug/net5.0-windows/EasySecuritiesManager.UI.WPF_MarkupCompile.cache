@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\
-EasySecuritiesManager.UI.WPF_3jpgsiur_wpftmp
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\
+EasySecuritiesManager.UI.WPF
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\Mike\Documents\GitHub\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\App.xaml
-11-1322395216
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\App.xaml
+13-1855740401
 
-53-35757722
-218-1209175617
-Controls\AssetSummaryControl.xaml;Controls\MajorIndexCardControl.xaml;Controls\MajorIndexListingControl.xaml;Controls\NavigationBarControl.xaml;MainWindow.xaml;Styles\CommonStyle.xaml;Styles\NavigationBarStyles.xaml;Views\BuyView.xaml;Views\HomeView.xaml;Views\LoginView.xaml;Views\PortfolioView.xaml;
+48-2010226681
+23752917287
+Controls\AssetListingControl.xaml;Controls\AssetSummaryControl.xaml;Controls\MajorIndexCardControl.xaml;Controls\MajorIndexListingControl.xaml;Controls\NavigationBarControl.xaml;MainWindow.xaml;Styles\CommonStyle.xaml;Styles\NavigationBarStyles.xaml;Views\BuyView.xaml;Views\HomeView.xaml;Views\LoginView.xaml;Views\PortfolioView.xaml;Views\RegisterView.xaml;
 
-True
+False
 

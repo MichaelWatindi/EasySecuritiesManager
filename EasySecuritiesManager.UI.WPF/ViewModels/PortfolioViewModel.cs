@@ -19,15 +19,21 @@
  *  Created 4/2/2021 7:52:49 PM
  *  Modified 4/2/2021 7:52:49 PM
  */
+using EasySecuritiesManager.UI.WPF.State.Assets;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class PortfolioViewModel : ViewModelBase
     {
-        public PortfolioViewModel() : base() 
-        {
+        public AssetListingViewModel pAssetListingViewModel { get ;  }
 
+        public PortfolioViewModel( AssetStore assetStore )
+        {
+            pAssetListingViewModel = new AssetListingViewModel( assetStore ) ;
         }
     }
 }

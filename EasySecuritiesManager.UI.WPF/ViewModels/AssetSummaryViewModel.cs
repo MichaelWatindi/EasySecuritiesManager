@@ -8,41 +8,22 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
     public class AssetSummaryViewModel : ViewModelBase
     {
         private readonly    AssetStore                              _assetStore ;
-        private readonly    ObservableCollection<AssetViewModel>    _assets ;
-
         //  Public properties
-        public  decimal                     AccountBalance  => _assetStore.AccountBalance ;
-        public IEnumerable<AssetViewModel>  Assets          => _assets ;
+        public  decimal                 AccountBalance          => _assetStore.AccountBalance ;
+        public AssetListingViewModel    pAssetSummaryViewModel  { get ; }
 
         public AssetSummaryViewModel( AssetStore assetStore ) : base()
         {
+            pAssetSummaryViewModel      = new AssetListingViewModel( assetStore, assets => assets.Take( 5 ) ) ;
             _assetStore                 = assetStore;
-            _assets                     = new ObservableCollection<AssetViewModel>() ;
             _assetStore.StateChanged    += AssetStore_StateChanged ;
-            ResetAssets() ;
         }
 
         private void AssetStore_StateChanged()
         {
             OnPropertyChanged( nameof( AccountBalance )) ;
-            ResetAssets() ;
         }
 
-        private void ResetAssets()
-        {
-            IEnumerable<AssetViewModel> assetViewModels = 
-                _assetStore.AssetTransactions
-                        .GroupBy( t => t.TheAsset.Symbol )
-                        .Select( g => new AssetViewModel( g.Key, g.Sum( a => a.IsPurchase?  a.Shares : - a.Shares )))
-                        .Where( a => a.Shares > 0 )
-                        .OrderByDescending( a => a.Shares );
-            _assets.Clear() ;
-
-            foreach( AssetViewModel viewModel in assetViewModels )
-            {
-                _assets.Add( viewModel ) ;
-            }
-                                                            
-        }
+        
     }
 }
