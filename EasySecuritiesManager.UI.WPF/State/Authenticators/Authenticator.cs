@@ -58,7 +58,8 @@ namespace EasySecuritiesManager.UI.WPF.State.Authenticators
             try {
                 CurrentAccount = await _authenticationService.Login( username, password );
                 return true ; 
-            } catch ( Exception  ) {
+            } catch ( Exception e ) {
+                string i = e.Message;
                 return false ; 
             }
         }

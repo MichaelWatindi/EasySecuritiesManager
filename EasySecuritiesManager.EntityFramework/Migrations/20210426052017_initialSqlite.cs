@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EasySecuritiesManager.EntityFramework.Migrations
 {
-    public partial class initial : Migration
+    public partial class initialSqlite : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,12 +11,12 @@ namespace EasySecuritiesManager.EntityFramework.Migrations
                 name: "tUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateJoined = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    Username = table.Column<string>(type: "TEXT", nullable: true),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
+                    DateJoined = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,10 +27,10 @@ namespace EasySecuritiesManager.EntityFramework.Migrations
                 name: "tAccounts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountHolderId = table.Column<int>(type: "int", nullable: true),
-                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AccountHolderId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Balance = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,21 +47,20 @@ namespace EasySecuritiesManager.EntityFramework.Migrations
                 name: "tAssetTransactions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TheAccountId = table.Column<int>(type: "int", nullable: true),
-                    IsPurchase = table.Column<bool>(type: "bit", nullable: false),
-                    TheAsset_Symbol = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TheAsset_PricePerShare = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TheAsset_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TheAsset_DayLow = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TheAsset_DayHigh = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TheAsset_YearHigh = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TheAsset_YearLow = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TheAsset_MarketCap = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TheAsset_TimeOfFetch = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Shares = table.Column<int>(type: "int", nullable: false),
-                    DateProcessed = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false),
+                    TheAccountId = table.Column<int>(type: "INTEGER", nullable: true),
+                    IsPurchase = table.Column<bool>(type: "INTEGER", nullable: false),
+                    TheAsset_Symbol = table.Column<string>(type: "TEXT", nullable: true),
+                    TheAsset_PricePerShare = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TheAsset_Name = table.Column<string>(type: "TEXT", nullable: true),
+                    TheAsset_DayLow = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TheAsset_DayHigh = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TheAsset_YearHigh = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TheAsset_YearLow = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TheAsset_MarketCap = table.Column<decimal>(type: "TEXT", nullable: true),
+                    TheAsset_TimeOfFetch = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Shares = table.Column<int>(type: "INTEGER", nullable: false),
+                    DateProcessed = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

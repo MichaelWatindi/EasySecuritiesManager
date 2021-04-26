@@ -27,17 +27,17 @@ namespace EasySecuritiesManager.EntityFramework
 {
     public class EasySecuritiesManagerDbContextFactory 
     {
-        private readonly string _connectionString ;
-
-        public EasySecuritiesManagerDbContextFactory( string connectionString )
+        private readonly Action<DbContextOptionsBuilder> _configureDBContext;
+        
+        public EasySecuritiesManagerDbContextFactory( Action<DbContextOptionsBuilder> configureDBContext )
         {
-            _connectionString = connectionString ;
+            this._configureDBContext = configureDBContext;
         }
 
         public EasySecuritiesManagerDBContext CreateDbContext(  )
         {
             var options = new DbContextOptionsBuilder<EasySecuritiesManagerDBContext>() ;
-            options.UseSqlServer( _connectionString ) ;
+            _configureDBContext( options ) ;
 
             return new EasySecuritiesManagerDBContext( options.Options ) ;
         }

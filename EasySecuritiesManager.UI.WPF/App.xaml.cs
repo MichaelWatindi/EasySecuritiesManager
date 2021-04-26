@@ -44,15 +44,17 @@ namespace EasySecuritiesManager.UI.WPF
                 })
                 .ConfigureServices( (context, services) =>
                 {
-                    string connectionString = context.Configuration.GetConnectionString( "default" ) ;
+                    string connectionString = context.Configuration.GetConnectionString( "sqlite" ) ;
+                    Action<DbContextOptionsBuilder> configureDBContext = o => o.UseSqlite( connectionString ) ;
 
-                    services.AddDbContext<EasySecuritiesManagerDBContext>( o => o.UseSqlServer( connectionString )) ;
-                    services.AddSingleton<EasySecuritiesManagerDbContextFactory>( new EasySecuritiesManagerDbContextFactory( connectionString ) );
+                    services.AddDbContext<EasySecuritiesManagerDBContext>( configureDBContext ) ;
+                    services.AddSingleton<EasySecuritiesManagerDbContextFactory>( new EasySecuritiesManagerDbContextFactory( configureDBContext ) );
                     services.AddSingleton<IDataService<Account>, AccountDataService>();
                     services.AddSingleton<IAccountService, AccountDataService>();
                     services.AddSingleton<IAuthenticationService, AuthenticationService>();
                     services.AddSingleton<IGetStockPriceService, GetStockPriceService>();
                     services.AddSingleton<IBuyStockService, BuyStockService>();
+                    services.AddSingleton<ISellStockService, SellStockService>();
 
                     services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
@@ -115,13 +117,20 @@ namespace EasySecuritiesManager.UI.WPF
                     services.AddScoped<MainWindow>( s => new WPF.MainWindow( s.GetRequiredService<MainViewModel>()));
                 } ) ;
         }
+        
         protected override void OnStartup(StartupEventArgs e)
         {
             //  Get configuration settings
             string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" ) ;
             _host.Start() ;
-                                                       
-            Window window = _host.Services.GetRequiredService<MainWindow>() ;
+
+            EasySecuritiesManagerDbContextFactory contextFactory = _host.Services.GetRequiredService<EasySecuritiesManagerDbContextFactory>() ;
+            using ( EasySecuritiesManagerDBContext context = contextFactory.CreateDbContext() )
+            {
+                context.Database.Migrate() ;
+            }
+
+            Window window = _host.Services.GetRequiredService<MainWindow>();
             window.Show() ;            
             base.OnStartup( e ) ;
         }
@@ -132,7 +141,5 @@ namespace EasySecuritiesManager.UI.WPF
             _host.Dispose() ;
             base.OnExit(e);
         }
-
-
     }
 }
