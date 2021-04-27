@@ -41,7 +41,7 @@
 
             <!--Data Template that maps the SellView to the SellViewModel-->
             <DataTemplate DataType="{x:Type viewmodels:SellViewModel}">
-                <views:SellView/>
+                <views:SellView SelectedAssetChangedCommand="{Binding SearchSymbolCommand}"/>
             </DataTemplate>
 
             <!--Data Template that maps the SettingsView to the SettingsViewModel-->
