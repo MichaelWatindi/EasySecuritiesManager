@@ -30,16 +30,22 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
         private readonly CreateViewModel<PortfolioViewModel>    _createPortFolioViewModel ;
         private readonly CreateViewModel<BuyViewModel>          _createBuyViewModel ;
         private readonly CreateViewModel<LoginViewModel>        _createLoginViewModel ;
+        private readonly CreateViewModel<SellViewModel>         _createSellViewModel ;
+        private readonly CreateViewModel<SettingsViewModel>     _createSettingsViewModel ;
 
-        public ViewModelFactory(    CreateViewModel<HomeViewModel>      createHomeViewModel, 
-                                    CreateViewModel<PortfolioViewModel> createPortFolioViewModel, 
-                                    CreateViewModel<BuyViewModel>       createBuyViewModel, 
-                                    CreateViewModel<LoginViewModel>     createLoginViewModel )
+        public ViewModelFactory(    CreateViewModel<HomeViewModel>      createHomeViewModel,
+                                    CreateViewModel<PortfolioViewModel> createPortFolioViewModel,
+                                    CreateViewModel<BuyViewModel>       createBuyViewModel,
+                                    CreateViewModel<LoginViewModel>     createLoginViewModel, 
+                                    CreateViewModel<SellViewModel>      createSellViewModel, 
+                                    CreateViewModel<SettingsViewModel>  createSettingsViewModel)
         {
             _createHomeViewModel        = createHomeViewModel;
             _createPortFolioViewModel   = createPortFolioViewModel;
             _createBuyViewModel         = createBuyViewModel;
             _createLoginViewModel       = createLoginViewModel;
+            _createSellViewModel        = createSellViewModel;
+            _createSettingsViewModel    = createSettingsViewModel;
         }
 
         public ViewModelBase CreateViewModel( ViewType viewType )
@@ -57,6 +63,12 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels.Factories
 
                 case ViewType.Login:
                     return _createLoginViewModel() ;
+
+                case ViewType.Sell:
+                    return _createSellViewModel();
+
+                case ViewType.Settings:
+                    return _createSettingsViewModel();
 
                 default:
                     throw new ArgumentException( "The ViewType does not have a ViewModel.", "viewType" );

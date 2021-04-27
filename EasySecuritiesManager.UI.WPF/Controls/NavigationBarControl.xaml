@@ -12,6 +12,7 @@
     <UserControl.Resources>
         <converters:EqualValueToParameterConverter x:Key="EqualValueToParameterConverter"/>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -55,20 +56,25 @@
                          CommandParameter="{x:Static nav:ViewType.Portfolio}"/>
 
             <!--Buy Radio Button-->
-            <RadioButton Grid.Column="2" 
-                         Content="Buy" 
+            <RadioButton Grid.Column="2" Content="Buy" 
                          IsChecked="{Binding CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:BuyViewModel}}" 
                          Command="{Binding UpdateCurrentViewModelCommand}" 
                          CommandParameter="{x:Static nav:ViewType.Buy}"/>
 
             <!--Sell Radio Button-->
-            <RadioButton Grid.Column="3" Content="Sell"/>
+            <RadioButton Grid.Column="3" Content="Sell"
+                         IsChecked="{Binding CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:SellViewModel}}" 
+                         Command="{Binding UpdateCurrentViewModelCommand}" 
+                         CommandParameter="{x:Static nav:ViewType.Sell}"/>
 
             <!--Space maker-->
             <TextBlock Grid.Column="4" Text=" "/>
 
             <!--Settings Radio Button-->
-            <RadioButton Grid.Column="5" Content="⚙"/>
+            <RadioButton Grid.Column="5" Content="⚙"
+                         IsChecked="{Binding CurrentViewModel, Converter={StaticResource EqualValueToParameterConverter}, Mode=OneWay, ConverterParameter={x:Type vm:SettingsViewModel}}" 
+                         Command="{Binding UpdateCurrentViewModelCommand}" 
+                         CommandParameter="{x:Static nav:ViewType.Settings}"/>
         </Grid>
     </Grid>
 </UserControl>

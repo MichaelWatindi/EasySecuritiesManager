@@ -31,7 +31,9 @@ namespace EasySecuritiesManager.UI.WPF.State.Navigators
         Home,
         Portfolio,
         Buy,
-        Login
+        Login,
+        Sell,
+        Settings
     }
     public interface INavigator
     {

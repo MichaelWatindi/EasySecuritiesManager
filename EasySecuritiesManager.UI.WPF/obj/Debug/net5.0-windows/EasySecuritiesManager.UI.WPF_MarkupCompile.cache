@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\App.xaml
-13-1855740401
+15-1437728470
 
-48-2010226681
+50-1866395577
 2451126230889
-Controls\AssetListingControl.xaml;Controls\AssetSummaryControl.xaml;Controls\MajorIndexCardControl.xaml;Controls\MajorIndexListingControl.xaml;Controls\NavigationBarControl.xaml;MainWindow.xaml;Styles\CommonStyle.xaml;Styles\NavigationBarStyles.xaml;Views\BuyView.xaml;Views\HomeView.xaml;Views\LoginView.xaml;Views\PortfolioView.xaml;Views\RegisterView.xaml;
+Controls\AssetListingControl.xaml;Controls\AssetSummaryControl.xaml;Controls\MajorIndexCardControl.xaml;Controls\MajorIndexListingControl.xaml;Controls\NavigationBarControl.xaml;MainWindow.xaml;Styles\CommonStyle.xaml;Styles\NavigationBarStyles.xaml;Views\BuyView.xaml;Views\HomeView.xaml;Views\LoginView.xaml;Views\PortfolioView.xaml;Views\RegisterView.xaml;Views\SellView.xaml;Views\SettingsView.xaml;
 
 False
 

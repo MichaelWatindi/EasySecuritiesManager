@@ -53,7 +53,8 @@ namespace EasySecuritiesManager.UI.WPF.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;component/controls/assetsummarycontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;V1.0.0.0;component/controls/assetsummarycontrol.xam" +
+                    "l", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\AssetSummaryControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

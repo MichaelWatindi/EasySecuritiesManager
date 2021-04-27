@@ -54,7 +54,8 @@ namespace EasySecuritiesManager.UI.WPF.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;component/controls/majorindexcardcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EasySecuritiesManager.UI.WPF;V1.0.0.0;component/controls/majorindexcardcontrol.x" +
+                    "aml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\MajorIndexCardControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

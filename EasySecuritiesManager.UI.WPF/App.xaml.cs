@@ -62,6 +62,8 @@ namespace EasySecuritiesManager.UI.WPF
                     services.AddSingleton<IViewModelFactory, ViewModelFactory>();
 
                     services.AddSingleton<BuyViewModel>();
+                    services.AddSingleton<SellViewModel>();
+                    services.AddSingleton<SettingsViewModel>();
                     services.AddSingleton<PortfolioViewModel>();
                     services.AddSingleton<AssetSummaryViewModel>();
                     services.AddSingleton<HomeViewModel>(services =>
@@ -79,6 +81,16 @@ namespace EasySecuritiesManager.UI.WPF
                     services.AddSingleton<CreateViewModel<BuyViewModel>>( services =>
                     {
                         return () => services.GetRequiredService<BuyViewModel>();
+                    });
+
+                    services.AddSingleton<CreateViewModel<SellViewModel>>( services =>
+                    {
+                        return () => services.GetRequiredService<SellViewModel>();
+                    });
+
+                    services.AddSingleton<CreateViewModel<SettingsViewModel>>( services =>
+                    {
+                        return () => services.GetRequiredService<SettingsViewModel>();
                     });
 
                     services.AddSingleton<CreateViewModel<PortfolioViewModel>>( services =>

@@ -38,6 +38,16 @@
             <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
                 <views:RegisterView />
             </DataTemplate>
+
+            <!--Data Template that maps the SellView to the SellViewModel-->
+            <DataTemplate DataType="{x:Type viewmodels:SellViewModel}">
+                <views:SellView/>
+            </DataTemplate>
+
+            <!--Data Template that maps the SettingsView to the SettingsViewModel-->
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                <views:SettingsView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

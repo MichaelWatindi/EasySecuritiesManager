@@ -31,10 +31,10 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 {
     class SearchSymbolCommand : AsyncCommandBase
     {
-        private readonly BuyViewModel           _viewModel;
-        private readonly IGetStockPriceService  _stockPriceService;
+        private readonly ISearchSymbolViewModel     _viewModel;
+        private readonly IGetStockPriceService      _stockPriceService;
        
-        public SearchSymbolCommand( BuyViewModel            viewModel, 
+        public SearchSymbolCommand(ISearchSymbolViewModel   viewModel, 
                                     IGetStockPriceService   stockPriceService )
         {
             _viewModel          = viewModel;

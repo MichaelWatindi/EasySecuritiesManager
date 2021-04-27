@@ -214,3 +214,7 @@ C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecu
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\bin\Debug\net5.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\bin\Debug\net5.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\bin\Debug\net5.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SellView.g.cs
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SettingsView.g.cs
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SellView.baml
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SettingsView.baml

@@ -27,7 +27,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
     public class ViewModelBase : ObservableObject
     {
-        public MessageViewModel ErrorMessageViewModel   { get; protected set; }
+        public MessageViewModel ErrorMessageViewModel   { get;  set; }
         public MessageViewModel StatusMessageViewModel  { get; protected set; }
 
         public ViewModelBase()
