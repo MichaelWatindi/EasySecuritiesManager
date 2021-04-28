@@ -32,9 +32,16 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 {
     public class MajorIndexService : IMajorIndexService
     {
+        private readonly FinancialModelingPrepHttpClientFactory _httpClientFactory;
+
+        public MajorIndexService(FinancialModelingPrepHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
         public async Task<MajorIndex> GetMajorIndex( MajorIndexType indexType )
         {
-            using ( FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient() )
+            using ( FinancialModelingPrepHttpClient client = _httpClientFactory.CreateHttpClient() )
             {                
                 string indexTypeURIRep  = GetIndexTypeURIRep( indexType ) ;
                 string serviceKey       = "46cc602100660fc8f6b927fa71223fc1" ;

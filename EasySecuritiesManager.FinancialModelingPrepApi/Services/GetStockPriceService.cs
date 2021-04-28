@@ -34,9 +34,16 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 
     public  class GetStockPriceService : IGetStockPriceService
     {
+        private readonly FinancialModelingPrepHttpClientFactory _httpClientFactory ;
+
+        public GetStockPriceService(FinancialModelingPrepHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
         public async Task<decimal> GetPrice( string symbol )
         {
-            using ( FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient() )
+            using ( FinancialModelingPrepHttpClient client = _httpClientFactory.CreateHttpClient() )
             {                
                 string serviceKey   = "46cc602100660fc8f6b927fa71223fc1";
                 string uriSuffix    = "quote-short/" + symbol.ToUpper() + "?apikey=" + serviceKey;

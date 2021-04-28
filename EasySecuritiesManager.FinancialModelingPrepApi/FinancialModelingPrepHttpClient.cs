@@ -30,8 +30,13 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi
 {
     public class FinancialModelingPrepHttpClient : HttpClient
     {
-        public FinancialModelingPrepHttpClient() => 
-            this.BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;        
+        private readonly string _apiKey;
+
+        public FinancialModelingPrepHttpClient(string apiKey)
+        {
+            BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;
+            _apiKey     = apiKey;
+        }
 
         public async Task<T> GetAsync<T>( string uri ) where T : class
         {

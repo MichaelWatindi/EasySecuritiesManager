@@ -4,6 +4,7 @@ using EasySecuritiesManager.Domain.Services.AuthenticationServices;
 using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.EntityFramework;
 using EasySecuritiesManager.EntityFramework.Services;
+using EasySecuritiesManager.FinancialModelingPrepApi;
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.State.Assets;
@@ -46,6 +47,9 @@ namespace EasySecuritiesManager.UI.WPF
                 {
                     string connectionString = context.Configuration.GetConnectionString( "sqlite" ) ;
                     Action<DbContextOptionsBuilder> configureDBContext = o => o.UseSqlite( connectionString ) ;
+
+                    string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" );
+                    services.AddSingleton<FinancialModelingPrepHttpClientFactory>( new FinancialModelingPrepHttpClientFactory( apiKey ) ) ;
 
                     services.AddDbContext<EasySecuritiesManagerDBContext>( configureDBContext ) ;
                     services.AddSingleton<EasySecuritiesManagerDbContextFactory>( new EasySecuritiesManagerDbContextFactory( configureDBContext ) );

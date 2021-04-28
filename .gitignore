@@ -4,3 +4,8 @@ EasySecuritiesManager.UI.WPF\bin
 .vs/EasySecuritiesManager/v16/.suo
 *.v2
 /EasySecuritiesManager.UI.WPF/bin/
+.vs/EasySecuritiesManager/v16/.suo
+*.cache
+EasySecuritiesManager.UI.WPF/obj/project.assets.json
+EasySecuritiesManager.UI.WPF/obj/project.nuget.cache
+EasySecuritiesManager.UI.WPF/obj/Debug/net5.0-windows/apphost.exe
