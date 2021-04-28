@@ -38,8 +38,8 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
         {
             using ( FinancialModelingPrepHttpClient client = new FinancialModelingPrepHttpClient() )
             {                
-                string serviceKey = "46cc602100660fc8f6b927fa71223fc1";
-                string uriSuffix = "quote-short/" + symbol.ToUpper() + "?apikey=" + serviceKey;
+                string serviceKey   = "46cc602100660fc8f6b927fa71223fc1";
+                string uriSuffix    = "quote-short/" + symbol.ToUpper() + "?apikey=" + serviceKey;
 
                 StockPriceResult stockPriceResult = await client.GetAsync<StockPriceResult>( uriSuffix ) ;
 

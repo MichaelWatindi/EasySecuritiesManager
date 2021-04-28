@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G0Em0AYVJoZXgOFIROIHRK3TTDLLbuD30TePUlo+mm4UkX5GZ3kLb0PQPi/2bCAsS0cocysYco/44YXlttNb9A==",
+  "dgSpecHash": "3vwZUhz1Pc2iYb5iEZsacqCPT0ncJZXWUueS+F7lxbHBh/lrYqJmiggvtdJDA2rt5vfAvi+HJQiSZmi0NubWvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\miket\\source\\repos\\EasySecuritiesManager\\EasySecuritiesManager\\EasySecuritiesManager.UI.WPF\\EasySecuritiesManager.UI.WPF.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,7 @@
     "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
     "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.hosting\\5.0.0\\microsoft.extensions.hosting.5.0.0.nupkg.sha512",
     "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\5.0.0\\microsoft.extensions.hosting.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.http\\5.0.0\\microsoft.extensions.http.5.0.0.nupkg.sha512",
     "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\miket\\.nuget\\packages\\microsoft.extensions.logging.configuration\\5.0.0\\microsoft.extensions.logging.configuration.5.0.0.nupkg.sha512",

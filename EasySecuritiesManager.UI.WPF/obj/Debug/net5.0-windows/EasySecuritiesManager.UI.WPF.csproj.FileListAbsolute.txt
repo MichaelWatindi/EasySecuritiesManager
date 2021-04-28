@@ -218,3 +218,5 @@ C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecu
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SettingsView.g.cs
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SellView.baml
 C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Views\SettingsView.baml
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Controls\SearchSymbolResultPanelControl.g.cs
+C:\Users\miket\source\repos\EasySecuritiesManager\EasySecuritiesManager\EasySecuritiesManager.UI.WPF\obj\Debug\net5.0-windows\Controls\SearchSymbolResultPanelControl.baml

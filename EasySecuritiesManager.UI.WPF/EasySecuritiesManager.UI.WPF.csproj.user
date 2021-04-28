@@ -22,6 +22,9 @@
     <Compile Update="Controls\NavigationBarControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\SearchSymbolResultPanelControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\BuyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -58,6 +61,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\NavigationBarControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\SearchSymbolResultPanelControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

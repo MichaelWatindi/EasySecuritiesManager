@@ -284,6 +284,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "PasswordBoxMVVM": {
               "target": "Package",
               "version": "[1.0.5, )"

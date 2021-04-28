@@ -20,7 +20,9 @@
  *  Modified 4/2/2021 7:25:28 PM
  */
 using EasySecuritiesManager.Domain.Services;
+using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.Commands;
+using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.State.Assets;
 using System;
 using System.Windows.Input;
@@ -29,7 +31,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
     public class SellViewModel : ViewModelBase, ISearchSymbolViewModel
     {
-        private AssetViewModel _selectedAsset;
+        private AssetViewModel _selectedAsset ;
         public  AssetListingViewModel   pAssetListingViewModel { get ; }        
 
         public AssetViewModel SelectedAsset
@@ -42,19 +44,10 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         }
 
         public ICommand SearchSymbolCommand { get ; }
-        public ICommand SellStockCommand    { get ; }
-
-        private string _symbol;
-        public string Symbol
-        {
-            get => _symbol;
-            set
-            {
-                _symbol = value;
-                OnPropertyChanged( nameof( Symbol ));
-            }
-        }
-
+        public ICommand pSellStockCommand   { get ; }
+        
+        public string Symbol => SelectedAsset?.Symbol ;
+        
         private decimal _stockPrice;
         public decimal StockPrice
         {
@@ -79,7 +72,6 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         }
 
         private int _sharesToSell ;
-
         public int SharesToSell
         {
             get => _sharesToSell ; 
@@ -93,10 +85,14 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
         public decimal TotalPrice => SharesToSell * StockPrice ;
 
-        public SellViewModel( AssetStore assetStore, IGetStockPriceService stockPriceService ) : base()
+        public SellViewModel(   AssetStore              assetStore, 
+                                IGetStockPriceService   stockPriceService, 
+                                IAccountStore           accountStore, 
+                                ISellStockService       sellStockService) : base()
         {
             pAssetListingViewModel  = new AssetListingViewModel( assetStore ) ;
-            SearchSymbolCommand     = new SearchSymbolCommand( this, stockPriceService ); 
+            SearchSymbolCommand     = new SearchSymbolCommand( this, stockPriceService ) ; 
+            pSellStockCommand       = new SellStockCommand(this, sellStockService, accountStore ) ;
         }
     }
 }

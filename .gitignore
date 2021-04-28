@@ -1,1 +1,3 @@
 EasySecuritiesManager.UI.WPF\bin
+*.dll
+*.pdb
