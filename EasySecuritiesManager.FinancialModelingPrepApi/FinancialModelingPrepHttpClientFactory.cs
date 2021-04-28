@@ -17,7 +17,7 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi
 
         public FinancialModelingPrepHttpClient CreateHttpClient()
         {
-            return new FinancialModelingPrepHttpClient( _apiKey ) ;
+            return new FinancialModelingPrepHttpClient(null,  _apiKey ) ;
         }
     }
 }

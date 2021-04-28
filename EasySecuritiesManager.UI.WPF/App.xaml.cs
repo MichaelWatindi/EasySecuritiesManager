@@ -49,6 +49,12 @@ namespace EasySecuritiesManager.UI.WPF
                     Action<DbContextOptionsBuilder> configureDBContext = o => o.UseSqlite( connectionString ) ;
 
                     string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" );
+
+                    services.AddHttpClient<FinancialModelingPrepHttpClient>( c =>
+                    {
+                        c.BaseAddress = new Uri("") ;
+                    });
+
                     services.AddSingleton<FinancialModelingPrepHttpClientFactory>( new FinancialModelingPrepHttpClientFactory( apiKey ) ) ;
 
                     services.AddDbContext<EasySecuritiesManagerDBContext>( configureDBContext ) ;

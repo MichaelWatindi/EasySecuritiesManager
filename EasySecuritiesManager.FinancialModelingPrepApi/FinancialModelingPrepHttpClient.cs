@@ -30,16 +30,19 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi
 {
     public class FinancialModelingPrepHttpClient : HttpClient
     {
+        private readonly HttpClient _client;
         private readonly string _apiKey;
 
-        public FinancialModelingPrepHttpClient(string apiKey)
+        public FinancialModelingPrepHttpClient(HttpClient client, string apiKey)
         {
             BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;
+            _client     = client;
             _apiKey     = apiKey;
         }
 
         public async Task<T> GetAsync<T>( string uri ) where T : class
         {
+            HttpResponseMessage respons = await _client.GetAsync( $"{uri}?apikey={_apiKey}" ) ;
             HttpResponseMessage response = await GetAsync( uri ) ;
             string jsonResponse = await response.Content.ReadAsStringAsync() ;
 
