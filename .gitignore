@@ -3,3 +3,4 @@ EasySecuritiesManager.UI.WPF\bin
 *.pdb
 .vs/EasySecuritiesManager/v16/.suo
 *.v2
+/EasySecuritiesManager.UI.WPF/bin/
