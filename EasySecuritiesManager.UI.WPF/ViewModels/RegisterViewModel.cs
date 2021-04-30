@@ -35,6 +35,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             set { 
                 _email = value;
                 OnPropertyChanged( nameof( Email )) ;
+                OnPropertyChanged( nameof( CanRegister )) ;
             }
         }
 
@@ -45,6 +46,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             set {
                 _username = value;
                 OnPropertyChanged( nameof( Username )) ;
+                OnPropertyChanged( nameof( CanRegister )) ;
             }
         }
 
@@ -55,6 +57,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             set {
                 _password = value;
                 OnPropertyChanged( nameof( Password )) ;
+                OnPropertyChanged( nameof( CanRegister )) ;
             }
         }
 
@@ -65,11 +68,22 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             set {
                 _confirmPassword = value ;
                 OnPropertyChanged( nameof( ConfirmPassword )) ;
+                OnPropertyChanged( nameof( CanRegister )) ;
             }
         }
 
         public ICommand pRegisterCommand     { get ; }
         public ICommand ViewLoginCommand    { get ; }
+        public bool     CanRegister 
+        {   
+            get {
+                return  !string.IsNullOrEmpty( Email ) && 
+                        !string.IsNullOrEmpty( Username ) && 
+                        !string.IsNullOrEmpty( Password ) && 
+                        !string.IsNullOrEmpty( ConfirmPassword ) ;
+            }
+            
+        }
 
         public RegisterViewModel(   IAuthenticator  authenticator, 
                                     IRenavigator    registerRenavigator, 
@@ -77,7 +91,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         {
             ErrorMessageViewModel   = new MessageViewModel() ;
             ViewLoginCommand        = new RenavigateCommand( loginRenavigator ) ;
-            pRegisterCommand        = new RegisterCommand(this, authenticator, registerRenavigator ) ;
+            pRegisterCommand        = new RegisterCommand( this, authenticator, registerRenavigator ) ;
         }
     }
 }

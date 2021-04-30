@@ -23,8 +23,8 @@ using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.Commands
 {
@@ -41,7 +41,14 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             _authenticator  = authenticator ;
             _reNavigator    = navigator;
             _loginViewModel = loginViewModel ;
-        }    
+
+            _loginViewModel.PropertyChanged += LoginViewModel_PropertyChanged ;
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return _loginViewModel.CanLogin &&  base.CanExecute(parameter);
+        }
 
         public override async Task ExecuteAsync( object parameter )
         {
@@ -50,9 +57,15 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 
             if ( success ) { 
                 _reNavigator.Renavigate() ; 
-            } else {
+            } 
+            else {
                 _loginViewModel.ErrorMessageViewModel.Message = "Login Failed. Invalid username or password." ;
             }
+        }
+
+        private void LoginViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LoginViewModel.CanLogin)) { OnCanExecuteChanged(); }
         }
     }
 }

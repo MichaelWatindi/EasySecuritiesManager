@@ -40,16 +40,18 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             set { 
                 _selectedAsset  = value ; 
                 OnPropertyChanged( nameof( SelectedAsset )) ;
+                OnPropertyChanged( nameof( Symbol )) ;
+                OnPropertyChanged( nameof( CanSearchSymbol )) ;
             }
         }
 
         public ICommand SearchSymbolCommand { get ; }
         public ICommand pSellStockCommand   { get ; }
         
-        public string Symbol => SelectedAsset?.Symbol ;
+        public string   Symbol          => SelectedAsset?.Symbol ;
         
         private decimal _stockPrice;
-        public decimal StockPrice
+        public decimal  StockPrice
         {
             get => _stockPrice;
             set
@@ -61,7 +63,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         }
 
         private string _searchResultSymbol = string.Empty ;
-        public string SearchResultSymbol
+        public string   SearchResultSymbol
         {
             get => _searchResultSymbol;
             set
@@ -79,11 +81,14 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
                 _sharesToSell  = value ;
                 OnPropertyChanged( nameof( SharesToSell )) ;
                 OnPropertyChanged( nameof( TotalPrice )) ;
+                OnPropertyChanged( nameof( CanSellStock )) ;
 
             }
         }
 
-        public decimal TotalPrice => SharesToSell * StockPrice ;
+        public decimal  TotalPrice      => SharesToSell * StockPrice ;
+        public bool     CanSearchSymbol => !string.IsNullOrEmpty( Symbol ) ;
+        public bool     CanSellStock    => SharesToSell > 0 ;
 
         public SellViewModel(   AssetStore              assetStore, 
                                 IGetStockPriceService   stockPriceService, 

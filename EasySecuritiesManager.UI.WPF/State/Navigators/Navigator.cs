@@ -20,12 +20,8 @@
  *  Modified 4/2/2021 7:30:39 PM
  */
 
-using EasySecuritiesManager.UI.WPF.Commands;
-using EasySecuritiesManager.UI.WPF.Models;
 using EasySecuritiesManager.UI.WPF.ViewModels;
-using EasySecuritiesManager.UI.WPF.ViewModels.Factories;
 using System;
-using System.Windows.Input;
 
 namespace EasySecuritiesManager.UI.WPF.State.Navigators
 {
@@ -36,7 +32,8 @@ namespace EasySecuritiesManager.UI.WPF.State.Navigators
         public ViewModelBase    CurrentViewModel  
         { 
             get  => _currentViewModel ; 
-            set { 
+            set {
+                _currentViewModel?.Dispose() ;
                 _currentViewModel = value ;
                 StateChanged?.Invoke() ;
             }

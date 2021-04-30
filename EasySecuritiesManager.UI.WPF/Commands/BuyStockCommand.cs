@@ -25,6 +25,7 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -41,11 +42,18 @@ namespace EasySecuritiesManager.UI.WPF.Commands
                                 IBuyStockService    buyStockService,
                                 IAccountStore       accountStore )
         {
-            _buyViewModel       = buyViewModel;
-            _buyStockService    = buyStockService;
-            _accountStore       = accountStore;
+            _buyViewModel       = buyViewModel ;
+            _buyStockService    = buyStockService ;
+            _accountStore       = accountStore ;
+
+            _buyViewModel.PropertyChanged += BuyViewModel_PropertyChanged ;
         }
-      
+
+        private void BuyViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if( e.PropertyName == nameof( BuyViewModel.CanBuyStock )) { OnCanExecuteChanged() ; }
+        }
+
         public override async Task ExecuteAsync( object parameter )
         {
             _buyViewModel.ErrorMessageViewModel.Message     = string.Empty ;
@@ -61,17 +69,21 @@ namespace EasySecuritiesManager.UI.WPF.Commands
                 _accountStore.CurrentAccount                    = account ;
                 _buyViewModel.StatusMessageViewModel.Message    = $"Successfully bought {shares} share(s) of {symbol}." ;
             }
-            catch ( InsufficientFundsException ) 
-            {
+            catch ( InsufficientFundsException ) {
                 _buyViewModel.ErrorMessageViewModel.Message = "Account has insufficient funds.";
-            } catch ( InvalidSymbolException  ) 
-            {
+            } 
+            catch ( InvalidSymbolException  ) {
                 _buyViewModel.ErrorMessageViewModel.Message = "Symbol could not be found.";
-            } catch ( Exception )  
-            {
+            } 
+            catch ( Exception ) {
                 _buyViewModel.ErrorMessageViewModel.Message = "Transaction Failed" ;
             }
             bool bought = _buyViewModel.ErrorMessageViewModel.HasMessage ;
+        }
+
+        public override bool CanExecute( object parameter )
+        {
+            return base.CanExecute(parameter);
         }
     }
 }

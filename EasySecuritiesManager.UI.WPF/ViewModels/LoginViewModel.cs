@@ -37,11 +37,13 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             set { 
                 _username = value ; 
                 OnPropertyChanged( nameof( Username )) ;
+                OnPropertyChanged( nameof( CanLogin )) ;
             }
         }
 
         public ICommand LoginCommand        { get ; }
         public ICommand ViewRegisterCommand { get ; }
+        public bool     CanLogin            => !string.IsNullOrEmpty( Username ) ;
 
         public LoginViewModel(  IAuthenticator  authenticator , 
                                 IRenavigator    loginRenavigator ,

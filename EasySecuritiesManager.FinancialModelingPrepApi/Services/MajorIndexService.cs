@@ -32,25 +32,21 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 {
     public class MajorIndexService : IMajorIndexService
     {
-        private readonly FinancialModelingPrepHttpClientFactory _httpClientFactory;
+        private readonly FinancialModelingPrepHttpClient _httpClient ;
 
-        public MajorIndexService(FinancialModelingPrepHttpClientFactory httpClientFactory)
+        public MajorIndexService( FinancialModelingPrepHttpClient httpClient )
         {
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient ;
         }
 
         public async Task<MajorIndex> GetMajorIndex( MajorIndexType indexType )
         {
-            using ( FinancialModelingPrepHttpClient client = _httpClientFactory.CreateHttpClient() )
-            {                
-                string indexTypeURIRep  = GetIndexTypeURIRep( indexType ) ;
-                string serviceKey       = "46cc602100660fc8f6b927fa71223fc1" ;
-                
-                string uriSuffix = "quote/" + indexTypeURIRep + "?apikey=" + serviceKey ; 
-
-                MajorIndex majorIndex = await client.GetAsync<MajorIndex>( uriSuffix ) ;
-                return majorIndex ;               
-            }
+            await Task.Delay( 5000 ) ;
+            string indexTypeURIRep  = GetIndexTypeURIRep( indexType ) ;
+                            
+            string uriSuffix = "quote/" + indexTypeURIRep ; // + "?apikey=" + serviceKey ; 
+            MajorIndex majorIndex = await _httpClient.GetAsync<MajorIndex>( uriSuffix ) ;
+            return majorIndex ;            
         }
 
         private string GetIndexTypeURIRep( MajorIndexType indexType )

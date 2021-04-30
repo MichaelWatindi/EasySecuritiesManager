@@ -35,5 +35,11 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
         {
             pAssetListingViewModel = new AssetListingViewModel( assetStore ) ;
         }
+
+        public override void Dispose()
+        {
+            pAssetListingViewModel.Dispose() ;
+            base.Dispose();
+        }
     }
 }

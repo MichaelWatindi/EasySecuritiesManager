@@ -39,7 +39,7 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 
         public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute( object parameter ) => !IsExecuting ;       
+        public virtual bool CanExecute( object parameter ) => !IsExecuting ;       
 
         public async void Execute( object parameter )
         {

@@ -36,8 +36,15 @@ namespace EasySecuritiesManager.UI.WPF.Views
 
         private void cbAssets_SelectionChanged( object sender, SelectionChangedEventArgs e )
         {
-            if ( cbAssets.SelectedItem == null ) { return ; }
-            SelectedAssetChangedCommand?.Execute( null ) ;
+            
+            if ( cbAssets.SelectedItem != null ) 
+            {
+                if ( SelectedAssetChangedCommand.CanExecute( null ))
+                {
+                    SelectedAssetChangedCommand?.Execute( null );
+                }
+                return ; 
+            }            
         }
     }
 }

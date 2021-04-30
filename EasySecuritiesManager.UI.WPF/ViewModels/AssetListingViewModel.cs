@@ -41,8 +41,13 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             _assetStore     = assetStore;
             _filterAssets   = filterAssets;
             _assets         = new ObservableCollection<AssetViewModel>();
+
             _assetStore.StateChanged += AssetStore_StateChanged;
             ResetAssets();
+        }
+        ~AssetListingViewModel()
+        {
+
         }
 
         public AssetListingViewModel( AssetStore assetStore ) : this( assetStore, assets => assets ) { }
@@ -59,16 +64,20 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
 
             _assets.Clear();
 
-            foreach (AssetViewModel viewModel in assetViewModels)
+            foreach ( AssetViewModel viewModel in assetViewModels )
             {
-                _assets.Add(viewModel);
+                _assets.Add( viewModel );
             }
         }
 
-        private void AssetStore_StateChanged()
+        private void AssetStore_StateChanged() =>  ResetAssets();
+
+        public override void Dispose()
         {
-            ResetAssets();
+            // _assetStore.StateChanged -= AssetStore_StateChanged ;
+            base.Dispose();
         }
+
 
     }
 }

@@ -5,6 +5,7 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.EntityFramework;
 using EasySecuritiesManager.EntityFramework.Services;
 using EasySecuritiesManager.FinancialModelingPrepApi;
+using EasySecuritiesManager.FinancialModelingPrepApi.Models;
 using EasySecuritiesManager.FinancialModelingPrepApi.Services;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.State.Assets;
@@ -37,25 +38,24 @@ namespace EasySecuritiesManager.UI.WPF
 
         public static IHostBuilder CreateHostBuilder( string[] args = null )
         {
-            return  Host.CreateDefaultBuilder(args)
+            return  Host.CreateDefaultBuilder( args )
                 .ConfigureAppConfiguration( c =>
                 {
                     c.AddJsonFile( "appsettings.json" ) ;
                     c.AddEnvironmentVariables( ) ;
                 })
-                .ConfigureServices( (context, services) =>
+                .ConfigureServices( ( context, services ) =>
                 {
                     string connectionString = context.Configuration.GetConnectionString( "sqlite" ) ;
                     Action<DbContextOptionsBuilder> configureDBContext = o => o.UseSqlite( connectionString ) ;
 
                     string apiKey = ConfigurationManager.AppSettings.Get( "financeApiKey" );
+                    services.AddSingleton( new FinancialModelingPrepApiKey( apiKey )) ;
 
                     services.AddHttpClient<FinancialModelingPrepHttpClient>( c =>
-                    {
-                        c.BaseAddress = new Uri("") ;
-                    });
-
-                    services.AddSingleton<FinancialModelingPrepHttpClientFactory>( new FinancialModelingPrepHttpClientFactory( apiKey ) ) ;
+                    {                        
+                        c.BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;
+                    });                   
 
                     services.AddDbContext<EasySecuritiesManagerDBContext>( configureDBContext ) ;
                     services.AddSingleton<EasySecuritiesManagerDbContextFactory>( new EasySecuritiesManagerDbContextFactory( configureDBContext ) );

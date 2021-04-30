@@ -23,6 +23,7 @@ using EasySecuritiesManager.Domain.Exceptions;
 using EasySecuritiesManager.Domain.Services;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -39,6 +40,16 @@ namespace EasySecuritiesManager.UI.WPF.Commands
         {
             _viewModel          = viewModel;
             _stockPriceService  = stockPriceService;
+
+            _viewModel.PropertyChanged += ViewModel_PropertyChanged ;
+        }
+
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if ( e.PropertyName == nameof( ISearchSymbolViewModel.CanSearchSymbol))
+            {
+                OnCanExecuteChanged() ;
+            }
         }
 
         public override async Task ExecuteAsync( object parameter )
@@ -55,6 +66,11 @@ namespace EasySecuritiesManager.UI.WPF.Commands
 
                 _viewModel.ErrorMessageViewModel.Message = "Failed to get symbol information";
             }
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return _viewModel.CanSearchSymbol && base.CanExecute(parameter);
         }
     }
 }

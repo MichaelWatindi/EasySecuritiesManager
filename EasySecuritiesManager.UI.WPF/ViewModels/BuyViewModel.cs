@@ -41,6 +41,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             {
                 _symbol = value;
                 OnPropertyChanged( nameof( Symbol ));
+                OnPropertyChanged( nameof( CanSearchSymbol ));
             }
         }
 
@@ -65,6 +66,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
                 _sharesToBuy = value;
                 OnPropertyChanged( nameof( SharesToBuy ));
                 OnPropertyChanged( nameof( TotalPrice ));
+                OnPropertyChanged( nameof( CanBuyStock ));
             }
         }
 
@@ -79,7 +81,9 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             }
         }
 
-        public decimal TotalPrice => SharesToBuy * StockPrice;
+        public decimal  TotalPrice      => SharesToBuy * StockPrice;
+        public bool     CanSearchSymbol => !string.IsNullOrEmpty( Symbol ) ;
+        public bool     CanBuyStock     => SharesToBuy > 0 ;
 
         public BuyViewModel(    IGetStockPriceService   stockPriceService,
                                 IBuyStockService        buyStockService,

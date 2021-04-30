@@ -34,29 +34,26 @@ namespace EasySecuritiesManager.FinancialModelingPrepApi.Services
 
     public  class GetStockPriceService : IGetStockPriceService
     {
-        private readonly FinancialModelingPrepHttpClientFactory _httpClientFactory ;
+        private readonly FinancialModelingPrepHttpClient _httpClient ;
 
-        public GetStockPriceService(FinancialModelingPrepHttpClientFactory httpClientFactory)
+        public GetStockPriceService( FinancialModelingPrepHttpClient httpClientFactory )
         {
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClientFactory;
         }
 
         public async Task<decimal> GetPrice( string symbol )
-        {
-            using ( FinancialModelingPrepHttpClient client = _httpClientFactory.CreateHttpClient() )
-            {                
-                string serviceKey   = "46cc602100660fc8f6b927fa71223fc1";
-                string uriSuffix    = "quote-short/" + symbol.ToUpper() + "?apikey=" + serviceKey;
+        {            
+            string uriSuffix    = "quote-short/" + symbol.ToUpper() ;// + "?apikey=" + serviceKey ;
 
-                StockPriceResult stockPriceResult = await client.GetAsync<StockPriceResult>( uriSuffix ) ;
+            StockPriceResult stockPriceResult = await _httpClient.GetAsync<StockPriceResult>( uriSuffix ) ;
 
-                if ( stockPriceResult.Price == 0 ) {   
+            if ( stockPriceResult.Price == 0 ) {   
                     
-                    throw new InvalidSymbolException( symbol ) ; 
-                }
-
-                return stockPriceResult.Price ;                
+                throw new InvalidSymbolException( symbol ) ; 
             }
+
+            return stockPriceResult.Price ;                
+            
         }
     }
 }

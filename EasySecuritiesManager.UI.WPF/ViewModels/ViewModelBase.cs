@@ -35,5 +35,7 @@ namespace EasySecuritiesManager.UI.WPF.ViewModels
             ErrorMessageViewModel   = new MessageViewModel() ;
             StatusMessageViewModel  = new MessageViewModel() ;
         }
+
+        public virtual void Dispose() { }
     }
 }

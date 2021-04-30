@@ -24,6 +24,7 @@ using EasySecuritiesManager.UI.WPF.State.Authenticators;
 using EasySecuritiesManager.UI.WPF.State.Navigators;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace EasySecuritiesManager.UI.WPF.Commands
@@ -41,6 +42,18 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             _registerViewModel  = registerViewModel ;
             _authenticator      = authenticator ;
             _renavigator        = renavigator ;
+
+            _registerViewModel.PropertyChanged += RegisterViewModel_PropertyChanged ;
+        }
+
+        private void RegisterViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof( RegisterViewModel.CanRegister )) { OnCanExecuteChanged() ; }
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return _registerViewModel.CanRegister &&  base.CanExecute(parameter);
         }
 
         public override async Task ExecuteAsync( object parameter )

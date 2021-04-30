@@ -19,6 +19,7 @@
  *  Created 4/4/2021 12:45:39 AM
  *  Modified 4/4/2021 12:45:39 AM
  */
+using EasySecuritiesManager.FinancialModelingPrepApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,28 +29,25 @@ using System.Threading.Tasks;
 
 namespace EasySecuritiesManager.FinancialModelingPrepApi
 {
-    public class FinancialModelingPrepHttpClient : HttpClient
+    public class FinancialModelingPrepHttpClient
     {
-        private readonly HttpClient _client;
-        private readonly string _apiKey;
+        private readonly HttpClient _client ;
+        private readonly string     _apiKey ;
 
-        public FinancialModelingPrepHttpClient(HttpClient client, string apiKey)
-        {
-            BaseAddress = new Uri( "https://financialmodelingprep.com/api/v3/" ) ;
-            _client     = client;
-            _apiKey     = apiKey;
+        public FinancialModelingPrepHttpClient( HttpClient client, FinancialModelingPrepApiKey apiKey )
+        {            
+            _client     = client ;
+            _apiKey     = apiKey.Key ;
         }
+
+        public string ApiKey => _apiKey;
 
         public async Task<T> GetAsync<T>( string uri ) where T : class
         {
-            HttpResponseMessage respons = await _client.GetAsync( $"{uri}?apikey={_apiKey}" ) ;
-            HttpResponseMessage response = await GetAsync( uri ) ;
+            HttpResponseMessage response = await _client.GetAsync( $"{uri}?apikey={ApiKey}" ) ;
             string jsonResponse = await response.Content.ReadAsStringAsync() ;
 
-            if ( jsonResponse == "" || jsonResponse == "[]" )
-            {
-                throw new Exception() ;
-            }
+            if ( jsonResponse == "" || jsonResponse == "[]" ) { throw new Exception() ; }
 
             List<T> entityCollection = JsonConvert.DeserializeObject<List<T>>( jsonResponse ) ;
             if ( !entityCollection.Any() ) { return null ; }

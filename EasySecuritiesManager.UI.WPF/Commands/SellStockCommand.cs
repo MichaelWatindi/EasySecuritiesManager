@@ -25,6 +25,7 @@ using EasySecuritiesManager.Domain.Services.TransactionServices;
 using EasySecuritiesManager.UI.WPF.State.Accounts;
 using EasySecuritiesManager.UI.WPF.ViewModels;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace EasySecuritiesManager.UI.WPF.Commands
@@ -42,6 +43,13 @@ namespace EasySecuritiesManager.UI.WPF.Commands
             _sellViewModel      = viewModel;
             _sellStockService   = sellStockService;
             _accountStore       = accountStore;
+
+            _sellViewModel.PropertyChanged += ViewModel_PropertyChanged ;
+        }
+
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if( e.PropertyName == nameof( SellViewModel.CanSellStock )) { OnCanExecuteChanged() ; }
         }
 
         public override async Task ExecuteAsync( object parameter )

@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <!--Page Title-->
@@ -17,6 +18,19 @@
 
         <!--List of Indices-->
         <Grid Grid.Row="1">
+            
+            <!--Grid Style -->
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLoading}" Value="False">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -26,6 +40,33 @@
             <local:MajorIndexCardControl Grid.Column="0" Margin="0 0 10 0" DataContext="{Binding Nasdaq}"/>
             <local:MajorIndexCardControl Grid.Column="1" Margin="5 0" DataContext="{Binding DowJones}"/>
             <local:MajorIndexCardControl Grid.Column="2" Margin="10 0 0 0" DataContext="{Binding SP500}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0 20 0 0">
+
+            <!--Grid Style -->
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <!--Loading Spinner-->
+            <TextBlock Grid.Row="0" 
+                       Text="Loading... " 
+                       TextAlignment="Center" 
+                       Foreground="DarkRed" 
+                       Margin="20" FontSize="24"/>
+
         </Grid>
     </Grid>
 </UserControl>

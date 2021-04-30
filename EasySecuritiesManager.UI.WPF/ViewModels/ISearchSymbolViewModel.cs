@@ -20,15 +20,16 @@
  *  Modified 4/2/2021 7:25:12 PM
  */
 
-using System.Windows.Input;
+using System.ComponentModel;
 
 namespace EasySecuritiesManager.UI.WPF.ViewModels
 {
-    public interface ISearchSymbolViewModel
+    public interface ISearchSymbolViewModel : INotifyPropertyChanged
     {
         MessageViewModel    ErrorMessageViewModel   { get; set ; }
         string              SearchResultSymbol      { set; }
         decimal             StockPrice              { set ; }
         string              Symbol                  { get ; }
+        bool                CanSearchSymbol         { get ; }
     }
 }
